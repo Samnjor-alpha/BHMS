@@ -1,0 +1,18 @@
+/* .invoice-title h3 {*/
+/*    display: inline-block;*/
+/*}*/
+
+/*.table > tbody > tr > .no-line {*/
+/*    border-top: none;*/
+/*}*/
+
+/*!*thead{*!*/
+/*!*    background-color: #067bee;*!*/
+/*!*}*!*/
+.table{
+
+    -webkit-print-color-adjust:exact;
+}
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
