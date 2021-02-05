@@ -3,7 +3,7 @@
 require  '../authentication/config.php';
 require  'session.php';
 include 'query.php';
-include 'process-data/add-client.php'
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
