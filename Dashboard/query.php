@@ -20,6 +20,7 @@ function createBillno() {
     return $pass;
 }
 $billno='Bill-'.createBillno();
+$mc_results = mysqli_query($conn, "SELECT * FROM monthly_clients");
 // start query daily sales earnings
 if (isset($_POST['query'])){
     $month=$_POST['d1'];

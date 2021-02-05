@@ -24,12 +24,16 @@ if (isset($_POST['SR'])) {
 
         $td= date('Y-m-d');
         if ($dt2>$td){
-            $msg="You can't record future records";
-            $msg_class="alert-danger";
+            echo "<script type='text/javascript'>
+  					swal('', 'You cant add feature records!!!', 'error');
+</script>";
         }else{
             if ($units<1){
                 $msg='Units cannot be less than 0';
-                $msg_class='alert-danger';
+
+                echo "<script type='text/javascript'>
+  					swal('', 'Units cannot be less than 0!!!', 'error');
+</script>";
             }else{
 
 
@@ -38,8 +42,10 @@ if (isset($_POST['SR'])) {
                 $res_e = mysqli_query($conn, $sql_e);
 
                 if (mysqli_num_rows($res_e) > 0) {
-                    $msg = "The sale for that date is already recorded";
-                    $msg_class = "alert-danger";
+
+                    echo "<script type='text/javascript'>
+  					swal('', 'The sale for that date is already recorded!!!', 'error');
+</script>";
                 } else {
                     if (empty($error)) {
 
@@ -48,12 +54,15 @@ if (isset($_POST['SR'])) {
                         if (mysqli_query($conn, $sql)) {
                             unset($_POST);
 
-                            $msg = "Record added successfully";
-                            $msg_class = "alert-success";
+                            echo "<script type='text/javascript'>
+  					swal('', 'Record added successfully!!!', 'success');	
+  					
+</script>";
 
                         } else {
-                            $msg = "There was an Error in the database";
-                            $msg_class = "alert-danger";
+                            echo "<script type='text/javascript'>
+  					swal('', 'There was an Error in the database!!!', 'error');
+</script>";
                         }
                     }
 

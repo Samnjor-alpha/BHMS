@@ -24,47 +24,8 @@ require 'query.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Monthly sales</title>
-    
-    <link href="../dist/css/styles.css" rel="stylesheet" />
+    <? include '../public/stylesheet.php'?>
 
-
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-
-
-
-    <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">-->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
-    <style>
-        body{
-
-            background-color: #ffffff;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='87' height='87' fill-opacity='0.04' fill='%23000000'/%3E%3C/svg%3E");
-        }
-
-    </style>
-    <script type="text/javascript">
-        function updateDue() {
-
-            var total = parseInt(document.getElementById("iunits").value);
-            var val2 = parseInt(document.getElementById("funits").value);
-
-            // to make sure that they are numbers
-            if (!total) { total = 0; }
-            if (!val2) { val2 = 0; }
-
-            var ansD = document.getElementById("units");
-            ansD.value = val2 - total;
-            var rate= parseInt(document.getElementById("rate").value)
-
-            if (!rate){rate=0}
-            var amount =document.getElementById("Amount");
-            amount.value= (val2-total) *rate;
-        }
-    </script>
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -206,22 +167,9 @@ require 'query.php';
 
         </main>
 
-        <footer class="py-4 bg-transparent mt-auto">
-            <div class="container-fluid">
+        <? include '../public/footer.php'?>
 
-                <div class="text-info text-center">&copy;Tomai water supplies</div>
-
-
-            </div>
-        </footer>
-
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../dist/js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+       <? include '../public/scripts.php'?>
 
 
 </body>

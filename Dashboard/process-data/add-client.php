@@ -21,22 +21,26 @@ if (isset($_POST['addclient'])) {
     $res_e = mysqli_query($conn, $sql_e);
 
     if (mysqli_num_rows($res_e) > 0) {
-        $msg = "The mobile number  is already associated with an customer";
-        $msg_class = "alert-danger";
+        echo "<script type='text/javascript'>
+  					swal('', 'The mobile number  is already associated with an customer!!!', 'error');
+</script>";
     }else{
 
 
-            if (empty($error)) {
+        if (empty($error)) {
 
-                $sql = "INSERT INTO monthly_clients SET fname='$fname',lname='$lname',biz_name='$biz',tel_phone='$tel',email='$email',rate_unit='$rate',date_registered=current_date() ";
-                if (mysqli_query($conn, $sql)) {
-                    $msg = "Registered successfully";
-                    $msg_class = "alert-success";
-                } else {
-                    $msg = "There was an Error in the database";
-                    $msg_class = "alert-danger";
-                }
+            $sql = "INSERT INTO monthly_clients SET fname='$fname',lname='$lname',biz_name='$biz',tel_phone='$tel',email='$email',rate_unit='$rate',date_registered=current_date() ";
+            if (mysqli_query($conn, $sql)) {
+                echo "<script type='text/javascript'>
+  					swal('', 'Client registered successfully!!!', 'success');	
+  					
+</script>";
+            } else {
+                echo "<script type='text/javascript'>
+  					swal('', 'There was an Error in the database!!!', 'error');
+</script>";
             }
+        }
 
-}}
+    }}
 ?>

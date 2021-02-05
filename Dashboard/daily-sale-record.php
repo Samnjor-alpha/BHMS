@@ -4,7 +4,7 @@ include '../authentication/config.php';
 require  'session.php';
 include 'process-data/csrf.php';
 include 'query.php';
-include 'process-data/add-drecord.php'
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,88 +15,8 @@ include 'process-data/add-drecord.php'
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Daily sale records</title>
-    
-    <link href="../dist/css/styles.css" rel="stylesheet" />
+<? include '../public/stylesheet.php'?>
 
-
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-
-
-
-<!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">-->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<style>
-    /* bootstrap-tagsinput.css file - add in local */
-
-    .bootstrap-tagsinput {
-        background-color: #fff;
-        border: 1px solid #ccc;
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        display: inline-block;
-        padding: 4px 6px;
-        color: #555;
-        vertical-align: middle;
-        border-radius: 4px;
-        max-width: 100%;
-        line-height: 22px;
-        cursor: text;
-    }
-    .bootstrap-tagsinput input {
-        border: none;
-        box-shadow: none;
-        outline: none;
-        background-color: transparent;
-        padding: 0 6px;
-        margin: 0;
-        width: auto;
-        max-width: inherit;
-    }
-    .bootstrap-tagsinput.form-control input::-moz-placeholder {
-        color: #777;
-        opacity: 1;
-    }
-    .bootstrap-tagsinput.form-control input:-ms-input-placeholder {
-        color: #777;
-    }
-    .bootstrap-tagsinput.form-control input::-webkit-input-placeholder {
-        color: #777;
-    }
-    .bootstrap-tagsinput input:focus {
-        border: none;
-        box-shadow: none;
-    }
-    .bootstrap-tagsinput .tag {
-        padding:2px;
-        border-width:2px;
-        color: #ffff;
-        background-color: #0f6674;
-    }
-    .bootstrap-tagsinput .tag [data-role="remove"] {
-        margin-left: 8px;
-        cursor: pointer;
-    }
-    .bootstrap-tagsinput .tag [data-role="remove"]:after {
-        content: "x";
-        padding: 0px 2px;
-    }
-    .bootstrap-tagsinput .tag [data-role="remove"]:hover {
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.87), 0 1px 2px rgba(0, 0, 0, 0.05);
-    }
-    .bootstrap-tagsinput .tag [data-role="remove"]:hover:active {
-        box-shadow: inset 0 3px 5px rgb(245, 241, 241);
-    }
-
-
-
-
-           body{
-
-            background-color: #ffffff;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='87' height='87' fill-opacity='0.04' fill='%23000000'/%3E%3C/svg%3E");
-        }
-    </style>
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -127,6 +47,7 @@ include 'process-data/add-drecord.php'
                     <li class="breadcrumb-item active">Today's Sale</li>
                 </ol>
             </div>
+            <? include 'process-data/add-drecord.php' ?>
             <div class="container">
                  <div class="row justify-content-center align-items-center">
                  <div id="login-box" class="col-md-10">
@@ -205,24 +126,9 @@ include 'process-data/add-drecord.php'
 
         </main>
 
-                <footer class="py-4 bg-transparent mt-auto">
-            <div class="container-fluid">
+                <? include '../public/footer.php'?>
 
-                <div class="text-info text-center">&copy;Tomai water supplies</div>
-
-
-            </div>
-        </footer>
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="../dist/js/scripts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-
-<script src="../dist/js/tags.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-
+        <?php include '../public/scripts.php'?>
 
 </body>
 </html>

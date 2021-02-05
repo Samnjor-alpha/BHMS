@@ -15,23 +15,7 @@ include 'query.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Dashboard</title>
-    
-    <link href="../dist/css/styles.css" rel="stylesheet" />
-
-
-    <script type="text/javascript" src="../dist/js/jquery.min.js"></script>
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-    <style>
-        body{
-
-            background-color: #ffffff;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='87' height='87' fill-opacity='0.04' fill='%23000000'/%3E%3C/svg%3E");
-        }
-
-    </style>
+    <? include '../public/stylesheet.php'?>
 
 
 
@@ -252,23 +236,10 @@ include 'query.php';
                 </div>
             </div>
                  </main>
-                <footer class="py-4 bg-transparent mt-auto">
-            <div class="container-fluid">
-
-                    <div class="text-info text-center">&copy;Tomai water supplies</div>
-
-
-            </div>
-        </footer>
+                <? include '../public/footer.php'?>
     </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="../dist/js/scripts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<? include '../public/scripts.php'?>
 
 </body>
 </html>

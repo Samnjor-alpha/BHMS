@@ -49,12 +49,14 @@ if (isset($_POST['SMR'])) {
 
         if ($dt1 > $dt2) {
 
-            $_SESSION['msg'] = "Re-check the dates ";
-            $_SESSION['msg_class'] = "alert-danger";
+            echo "<script type='text/javascript'>
+  					swal('', 'Re-check the dates!!!', 'error');
+</script>";
         }
         if ($dt2 > $td) {
-            $_SESSION['msg'] = "You can't record future records";
-            $_SESSION['msg_class'] = "alert-danger";
+            echo "<script type='text/javascript'>
+  					swal('', 'Cant record future dates!!!', 'error');
+</script>";
         } else {
             $start_date = strtotime($sdater);
             $end_date = strtotime($endater);
@@ -83,24 +85,29 @@ if (isset($_POST['SMR'])) {
 
                         if (mysqli_query($conn, $sql)) {
 
+                            echo "<script type='text/javascript'>
+  					swal('', 'Monthly record added successfully!!!', 'success').then(function() {
+  					window.location.href='monthly-sale.php?billno=$billnoe';
+  					});
+</script>";
 
-                            echo "<script>alert('Submitted successfully');</script>";
-                            echo "<script type='text/javascript'> document.location = 'monthly-sale.php?billno=$billnoe'; </script>";
 
 
                         } else {
 
 //            echo error_log($sql);
 
-                            $_SESSION['msg'] = "Error occurred in the database";
-
-                            $_SESSION['msg_class'] = "alert-danger";
+                            echo "<script type='text/javascript'>
+  					swal('', 'There was an Error in the database!!!', 'error');
+</script>";
                         }
                     }
                 } else {
                     if (mysqli_num_rows($dates_results) > 1) {
-                        $_SESSION['msg'] = 'The bill for that date is already recorded';
-                        $_SESSION['msg_class'] = 'alert-danger';
+
+                        echo "<script type='text/javascript'>
+  					swal('', 'The bill for that date is already recorded!!!', 'error');
+</script>";
                     } else {
                         $due = $camount - $fAmount;
 
@@ -113,15 +120,18 @@ if (isset($_POST['SMR'])) {
                             if (mysqli_query($conn, $sql)) {
 
 
-                                echo "<script>alert('Submitted successfully');</script>";
-                                echo "<script type='text/javascript'> document.location = 'monthly-sale.php?billno=$billnoe'; </script>";
+                                echo "<script type='text/javascript'>
+  					swal('', 'Monthly record added successfully!!!', 'success').then(function() {
+  					window.location.href='monthly-sale.php?billno=$billnoe';
+  					});
+</script>";
                             } else {
 
 //            echo error_log($sql);
 
-                                $_SESSION['msg'] = "Error occurred in the database";
-
-                                $_SESSION['msg_class'] = "alert-danger";
+                                echo "<script type='text/javascript'>
+  					swal('', 'There was an Error in the database!!!', 'error');
+</script>";
                             }
                         }
 

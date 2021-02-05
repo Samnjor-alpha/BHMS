@@ -109,7 +109,7 @@ if (isset($_POST['update_client'])) {
                     <div class="sb-sidenav-menu-heading">Core</div>
                     <a class="nav-link" href="../home.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Dashboard</a>
+                        Edit client</a>
                     <div class="sb-sidenav-menu-heading">Daily Sales</div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                     ><div class="sb-nav-link-icon"><i class="fas fa-calendar-day"></i></div>Daily sales
@@ -236,14 +236,7 @@ if (isset($_POST['update_client'])) {
 
         </main>
 
-        <footer class="py-4 bg-transparent mt-auto">
-            <div class="container-fluid">
-
-                <div class="text-info text-center">&copy;Tomai water supplies</div>
-
-
-            </div>
-        </footer>
+        <? include '../public/footer.php'?>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
