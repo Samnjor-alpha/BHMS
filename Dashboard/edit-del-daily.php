@@ -55,7 +55,16 @@ require 'query.php';
                     echo $dt2=$date2->format("d-M-Y"); ?></h3>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">This  daily Sale</li>
-                </ol>
+                 </ol>
+                <div class="row">
+                    <div class="float-left">
+                        <div class="btn-group">
+                            <a href="javascript: history.go(-1)" class="btn  btn-lg"><i class="text-secondary fas fa-arrow-left"></i></a>
+
+                        </div>
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
             </div>
             <div class="container">
                 <div class="row justify-content-center align-items-center">
@@ -136,14 +145,7 @@ require 'query.php';
 
         <? include '../public/footer.php'?>
 
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../dist/js/scripts.js"></script>
-        <script src="../dist/js/tags.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <?php include '../public/scripts.php'?>
 
 </body>

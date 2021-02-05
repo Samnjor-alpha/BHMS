@@ -50,6 +50,15 @@ $sql = mysqli_query($conn, "SELECT * FROM mcustomer_sales WHERE client_id='$cid'
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">generate bill paid receipt</li>
                 </ol>
+                <div class="row">
+                    <div class="float-left">
+                        <div class="btn-group">
+                            <a href="javascript: history.go(-1)" class="btn  btn-lg"><i class="text-secondary fas fa-arrow-left"></i></a>
+
+                        </div>
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
             </div>
             <div class="container">
                 <div class="row justify-content-center align-items-center">

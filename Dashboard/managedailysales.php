@@ -75,7 +75,16 @@ require 'query.php';
                         echo $label.' '.'records';
                         }
                         ?> daily sales</li>
-                </ol>
+                 </ol>
+                <div class="row">
+                    <div class="float-left">
+                        <div class="btn-group">
+                            <a href="javascript: history.go(-1)" class="btn  btn-lg"><i class="text-secondary fas fa-arrow-left"></i></a>
+
+                        </div>
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
             </div>
 
             <div class="container">

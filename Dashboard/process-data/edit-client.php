@@ -164,7 +164,16 @@ if (isset($_POST['update_client'])) {
                 <h3 class="mt-4">Edit Client</h3>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Update clients details</li>
-                </ol>
+                 </ol>
+                <div class="row">
+                    <div class="float-left">
+                        <div class="btn-group">
+                            <a href="javascript: history.go(-1)" class="btn  btn-lg"><i class="text-secondary fas fa-arrow-left"></i></a>
+
+                        </div>
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
             </div>
             <div class="container">
                 <div class="row justify-content-center align-items-center">

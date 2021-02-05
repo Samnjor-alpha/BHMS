@@ -58,8 +58,15 @@ require 'query.php';
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item">Manage <? $date2 = new DateTime('Y');
                        echo  $dt2=$date2->format('Y'); ?> Monthly Records</li>
-                </ol>
-            </div>
+                <div class="row">
+                    <div class="float-left">
+                        <div class="btn-group">
+                            <a href="javascript: history.go(-1)" class="btn  btn-lg"><i class="text-secondary fas fa-arrow-left"></i></a>
+
+                        </div>
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
 
             <div class="container">
                 <div  class="row justify-content-center">

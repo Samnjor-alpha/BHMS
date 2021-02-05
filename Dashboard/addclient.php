@@ -44,6 +44,15 @@ include 'query.php';
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Add New client</li>
                 </ol>
+                <div class="row">
+                    <div class="float-left">
+                        <div class="btn-group">
+                            <a href="javascript: history.go(-1)" class="btn  btn-lg"><i class="text-secondary fas fa-arrow-left"></i></a>
+
+                        </div>
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
             </div>
             <? include 'process-data/add-client.php' ?>
             <div class="container">

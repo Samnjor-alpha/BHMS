@@ -48,7 +48,16 @@ include 'process-data/csrf.php';
                 <h3 class="mt-4">Add Monthly Record : <? echo date('D, M,Y'); ?></h3>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Record a monthly Bill</li>
-                </ol>
+                 </ol>
+                <div class="row">
+                    <div class="float-left">
+                        <div class="btn-group">
+                            <a href="javascript: history.go(-1)" class="btn  btn-lg"><i class="text-secondary fas fa-arrow-left"></i></a>
+
+                        </div>
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
             </div>
             <div class="container">
                 <div class="row justify-content-center align-items-center">
