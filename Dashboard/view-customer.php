@@ -125,7 +125,7 @@ function formatMoney($number, $fractional=false) {
                                                 <a class="dropdown-item">Generate amount due receipt</a>
                                             <?}?>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item text-success" href="process-data/edit-client.php?client-id=<?php echo $s_row['mc_id'] ?>"><i class="fas fa-user-edit"></i> Edit Client</a>
+                                            <a class="dropdown-item text-success" href="edit-client.php?client-id=<?php echo $s_row['mc_id'] ?>"><i class="fas fa-user-edit"></i> Edit Client</a>
                                             <a class="dropdown-item text-danger" href="delete-client.php?client-d=<?php echo $s_row['mc_id']?>"><i class="fas fa-user-minus"></i> Delete Client</a>
 
                                         </div>

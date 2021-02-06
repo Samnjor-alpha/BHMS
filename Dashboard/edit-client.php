@@ -1,7 +1,7 @@
 
 <?php
-include '../../authentication/config.php';
-require '../session.php';
+include '../authentication/config.php';
+require 'session.php';
 
 
 
@@ -15,42 +15,7 @@ $rowclient = $result_client_details->fetch_assoc();
 $msg = "";
 $msg_class = "";
 
-if (isset($_POST['update_client'])) {
-    // for the database
 
-    $fname = stripslashes($_POST['fname']);
-    $lname = stripslashes($_POST['lname']);
-    $email = stripslashes($_POST['email']);
-    $tel = stripslashes($_POST['mobile']);
-    $biz = stripslashes($_POST['biz']);
-    $rate = stripslashes($_POST['rate']);
-
-
-
-
-    $sql_e = "SELECT * FROM monthly_clients WHERE tel_phone='$tel'";
-
-    $res_e = mysqli_query($conn, $sql_e);
-
-    if (mysqli_num_rows($res_e) > 0) {
-        $msg = "The mobile number  is already associated with an customer";
-        $msg_class = "alert-danger";
-    }
-
-
-    if (empty($error)) {
-
-        $sql = "UPDATE monthly_clients SET fname='$fname',lname='$lname',biz_name='$biz',tel_phone='$tel',email='$email',rate_unit='$rate' where mc_id='$cid'";
-        if (mysqli_query($conn, $sql)) {
-            $msg = "Updated successfully";
-            $msg_class = "alert-success";
-        } else {
-            $msg = "There was an Error in the database";
-            $msg_class = "alert-danger";
-        }
-    }
-
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,31 +27,11 @@ if (isset($_POST['update_client'])) {
     <meta name="author" content="" />
     <title>Update Client</title>
     
-    <link href="../../dist/css/styles.css" rel="stylesheet" />
-
-
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-
-
-
-    <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">-->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    
-
-
-    <style>
-           body{
-
-            background-color: #ffffff;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='87' height='87' fill-opacity='0.04' fill='%23000000'/%3E%3C/svg%3E");
-        }
-    </style>
+<? include '../public/stylesheet.php'?>
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="../home.php">Tomai water supplies</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+    <a class="navbar-brand" href="home.php">Tomai water supplies</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
     <form class="  form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 
     </form>
@@ -96,7 +41,7 @@ if (isset($_POST['update_client'])) {
             <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 
-                <a class="dropdown-item" href="logout.php">Logout</a>
+                <a class="dropdown-item" href="process-data/logout.php">Logout</a>
             </div>
         </li>
     </ul>
@@ -107,7 +52,7 @@ if (isset($_POST['update_client'])) {
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="../home.php">
+                    <a class="nav-link" href="home.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Edit client</a>
                     <div class="sb-sidenav-menu-heading">Daily Sales</div>
@@ -116,7 +61,7 @@ if (isset($_POST['update_client'])) {
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                         ></a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="../daily-sale-record.php">Record today's sale</a>
+                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="daily-sale-record.php">Record today's sale</a>
                             </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayoutss"
@@ -125,8 +70,8 @@ if (isset($_POST['update_client'])) {
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                         ></a>
                     <div class="collapse" id="collapseLayoutss" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                         <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="../previous-dailysales.php">View Previous sales</a>
-                            <a class="nav-link" href="../managedailysales.php">Manage daily sales</a>
+                         <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="previous-dailysales.php">View Previous sales</a>
+                            <a class="nav-link" href="managedailysales.php">Manage daily sales</a>
                         </nav>
                     </div>
                     <div class="sb-sidenav-menu-heading">Monthly Sales</div>
@@ -135,9 +80,9 @@ if (isset($_POST['update_client'])) {
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                         ></a>
                     <div class="collapse" id="collapseLayoutsm" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                          <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="../monthly-sale.php">Record  sales</a>
+                          <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="monthly-sale.php">Record  sales</a>
                         </nav>
-                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="../view-monthlysale.php">Generate  Report</a>
+                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="view-monthlysale.php">Generate  Report</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayoutssm"
@@ -146,15 +91,15 @@ if (isset($_POST['update_client'])) {
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                         ></a>
                     <div class="collapse" id="collapseLayoutssm" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="../addclient.php">Add new Client</a></nav>
-                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="../view-customers.php?client-id=null"">View Customers</a></nav>
+                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="addclient.php">Add new Client</a></nav>
+                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="view-customers.php?client-id=null"">View Customers</a></nav>
                     </div>
                 </div>
             </div>
             <div class="sb-sidenav-footer">
                 <div class="text-left">Logged in as:</div>
                 <p class="text-left"> <?php echo $_SESSION['bhmsuser']; ?></p>
-                <div class="text-left ml-sm-auto   d-sm-inline-block d-md-none d-lg-none d-xl-none ml-sm-0 ml-lg-0 ml-xl-0 ml-md-0"><a class="btn btn-block btn-outline-danger" href="logout.php">Logout</a> </div>
+                <div class="text-left ml-sm-auto   d-sm-inline-block d-md-none d-lg-none d-xl-none ml-sm-0 ml-lg-0 ml-xl-0 ml-md-0"><a class="btn btn-block btn-outline-danger" href="process-data/logout.php">Logout</a> </div>
             </div>
         </nav>
     </div>
@@ -249,13 +194,54 @@ if (isset($_POST['update_client'])) {
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../../dist/js/scripts.js"></script>
+        <script src="../dist/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="../../dist/assets/demo/chart-area-demo.js"></script>
-        <script src="../../dist/assets/demo/chart-bar-demo.js"></script>
+        <script src="../dist/assets/demo/chart-area-demo.js"></script>
+        <script src="../dist/assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="../../dist/assets/demo/datatables-demo.js"></script>
+        <script src="../dist/assets/demo/datatables-demo.js"></script>
 
 </body>
 </html>
+<?php
+if (isset($_POST['update_client'])) {
+    // for the database
+
+    $fname = stripslashes($_POST['fname']);
+    $lname = stripslashes($_POST['lname']);
+    $email = stripslashes($_POST['email']);
+    $tel = stripslashes($_POST['mobile']);
+    $biz = stripslashes($_POST['biz']);
+    $rate = stripslashes($_POST['rate']);
+
+
+
+
+    $sql_e = "SELECT * FROM monthly_clients WHERE tel_phone='$tel'  and not mc_id='$cid'";
+
+    $res_e = mysqli_query($conn, $sql_e);
+
+    if (mysqli_num_rows($res_e) > 0) {
+        echo "<script type='text/javascript'>
+  					swal('', 'The phone no  is already associated with an customer!!!', 'error');
+</script>";
+    }
+
+
+    if (empty($error)) {
+
+        $sql = "UPDATE monthly_clients SET fname='$fname',lname='$lname',biz_name='$biz',tel_phone='$tel',email='$email',rate_unit='$rate' where mc_id='$cid'";
+        if (mysqli_query($conn, $sql)) {
+            echo "<script type='text/javascript'>
+  					swal('', 'Client updated successfully!!!', 'success');	
+  					
+</script>";
+        } else {
+            echo "<script type='text/javascript'>
+  					swal('', 'There was an Error in the database!!!', 'error');
+</script>";
+        }
+    }
+
+}
