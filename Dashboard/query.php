@@ -193,10 +193,27 @@ $value = date('n', $time);
 $mrecords="select *  from mcustomer_sales where year(end_date)='$dt2' order by end_date DESC";
 $result_mrecords=mysqli_query($conn,$mrecords);
 
+//$sql_clients = "SELECT * FROM monthly_clients  ORDER by mc_id DESC LIMIT 10 OFFSET 11 ";
+//$result_clients = mysqli_query($conn, $sql_clients);
+if (isset($_GET['page_no']) && $_GET['page_no']!="") {
+    $page_no = $_GET['page_no'];
+} else {
+    $page_no = 1;
+}
 
-$msg = "";
-$msg_class = "";
+$total_records_per_page =5;
+$offset = ($page_no-1) * $total_records_per_page;
+$previous_page = $page_no - 1;
+$next_page = $page_no + 1;
+$adjacents = "2";
 
+$result_count = mysqli_query($conn,"select count(*) as total_records from monthly_clients");
+$total_records = mysqli_fetch_array($result_count);
+$total_records = $total_records['total_records'];
+$total_no_of_pages = ceil($total_records / $total_records_per_page);
+$second_last = $total_no_of_pages - 1; // total page minus 1
+
+$result_clients = mysqli_query($conn,"SELECT * FROM `monthly_clients` ORDER by mc_id DESC LIMIT $offset, $total_records_per_page");
 if (isset($_POST['uMR'])) {
     // for the database
     $iR = stripslashes($_POST['uiR']);
