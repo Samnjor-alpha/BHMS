@@ -13,7 +13,7 @@ if (isset($_POST['addclient'])) {
     $biz = mysqli_real_escape_string($conn,$_POST['biz']);
     $rate = mysqli_real_escape_string($conn,$_POST['rate']);
 
-
+$adm_id=$_SESSION['id'];
 
 
     $sql_l = "SELECT * FROM monthly_clients WHERE tel_phone='$tel'";
@@ -29,7 +29,7 @@ if (isset($_POST['addclient'])) {
 
         if (empty($error)) {
 
-            $sql = "INSERT INTO monthly_clients SET fname='$fname',lname='$lname',biz_name='$biz',tel_phone='$tel',email='$email',rate_unit='$rate',date_registered=current_date() ";
+            $sql = "INSERT INTO monthly_clients SET admin_id='$adm_id',fname='$fname',lname='$lname',biz_name='$biz',tel_phone='$tel',email='$email',rate_unit='$rate',date_registered=current_date() ";
             if (mysqli_query($conn, $sql)) {
                 echo "<script type='text/javascript'>
   					swal('', 'Client registered successfully!!!', 'success');	

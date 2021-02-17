@@ -66,15 +66,11 @@ include 'query.php'
                                         ?>
 
                                     <?php
-
                                     if (mysqli_num_rows($result_clients) <1) {
                                     echo"<div class='alert  alert-warning alert-dismissible'>";
                                         echo"No monthly customers available";
                                         echo"</div>";
-                                    }else{
-
-
-                                    ?>
+                                    }else{        ?>
                                     <table class="table  table-borderless" >
                                         <thead>
                                         <tr>
@@ -106,7 +102,8 @@ include 'query.php'
                                         <div style='padding: 10px 20px 0px; border-top: dotted 1px #CCC;'>
                                             <strong>Page <?php echo $page_no." of ".$total_no_of_pages; ?></strong>
                                         </div>
-                                        <ul class="pagination text-center">
+                                        <div style="position: center;">
+                                        <ul class="pagination">
                                             <?php // if($page_no > 1){ echo "<li><a href='?page_no=1'>First Page</a></li>"; } ?>
 
                                             <li <?php if($page_no <= 1){ echo "class='disabled'"; } ?>>
@@ -177,6 +174,7 @@ include 'query.php'
                                                 echo "<li><a href='?page_no=$total_no_of_pages'>Last &rsaquo;&rsaquo;</a></li>";
                                             } ?>
                                         </ul>
+                                        </div>
                                     <?php }?>
 
 

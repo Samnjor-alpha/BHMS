@@ -105,7 +105,7 @@ include 'query.php';
                     $result_sale = mysqli_query($conn, $sql_sale);
                     if (mysqli_num_rows($result_sale) <1) {
                         echo"<div class='alert  alert-warning alert-dismissible'>";
-                        echo"<p>No sales report for that month</p>";
+                        echo"<p>No record reports for that month</p>";
                         echo"</div>";
                     }else{
 
@@ -122,7 +122,7 @@ include 'query.php';
                                         </address></h4>
 
                         <div class="row d-sm-flex align-items-center justify-content-between mb-auto">
-                        <table class="table     table-responsive" >
+                        <table class="table    table-bordered table-responsive" >
                         <thead>
                         <tr>
                             <th> Date sold</th>
@@ -131,6 +131,7 @@ include 'query.php';
                             <th> Spent Expenditures </th>
                             <th>Final Amount</th>
                             <th> Expenditures </th>
+                            <th>Recorded by</th>
 
 
                         </tr>
@@ -161,7 +162,19 @@ include 'query.php';
                                     echo formatMoney($dsdsd, true);
                                     ?></td>
                                 <td class="text-monospace"><?php echo $row_sale['Expenditures']; ?></td>
+                                <td class="text-monospace"><?php
+                                    $a_id=$row_sale['admin_id'];
+                                    $rec_details = "SELECT * FROM admin_user where a_id='$a_id'";
+
+                                    $result_record=mysqli_query($conn,$rec_details);
+                                    if (mysqli_num_rows($result_record)>0){
+                                    $row_rec = $result_record->fetch_assoc();
+                                    echo $row_rec['username'];}else{
+                                        echo "Unknown";
+                                    }
+                                    ?></td>
                             </tr>
+
 
                         </tbody>
                             <?php }?>
@@ -183,7 +196,7 @@ include 'query.php';
                                 }
                                 ?>
                             </th>
-                            <th colspan="1" style="border-top:1px solid #999999">
+                            <th colspan="" style="border-top:1px solid #999999">
                                 <?php
 
 
@@ -201,8 +214,8 @@ include 'query.php';
                                 }
                                 ?>
                             </th>
-                            <th colspan="0" style="border-top:1px solid #999999"></th>
-                        <th colspan="1" style="border-top:1px solid #999999">
+
+                        <th colspan="0" style="border-top:1px solid #999999">
                             <?php
 
 

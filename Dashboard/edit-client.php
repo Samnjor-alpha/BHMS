@@ -192,7 +192,7 @@ $msg_class = "";
 <?php
 if (isset($_POST['update_client'])) {
     // for the database
-
+    $adm_id=$_SESSION['id'];
     $fname = stripslashes($_POST['fname']);
     $lname = stripslashes($_POST['lname']);
     $email = stripslashes($_POST['email']);
@@ -216,7 +216,7 @@ if (isset($_POST['update_client'])) {
 
     if (empty($error)) {
 
-        $sql = "UPDATE monthly_clients SET fname='$fname',lname='$lname',biz_name='$biz',tel_phone='$tel',email='$email',rate_unit='$rate' where mc_id='$cid'";
+        $sql = "UPDATE monthly_clients SET SET admin_id='$adm_id', fname='$fname',lname='$lname',biz_name='$biz',tel_phone='$tel',email='$email',rate_unit='$rate' where mc_id='$cid'";
         if (mysqli_query($conn, $sql)) {
             echo "<script type='text/javascript'>
   					swal('', 'Client updated successfully!!!', 'success');	

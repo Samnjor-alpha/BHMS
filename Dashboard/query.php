@@ -1,6 +1,8 @@
 <?php
 $msg = "";
 $msg_class = "";
+// for the database
+$adm_id=$_SESSION['id'];
 function createBillno() {
     $chars = "003232303232023232023456789";
     srand((double)microtime()*1000000);
@@ -170,7 +172,7 @@ if (isset($_POST['USR'])) {
     } else {
         if (empty($error)) {
 
-            $sql = "UPDATE daily_sales SET  units='$units',i_reading='$iR',f_reading='$fR',Amount='$iAmount',Expenditures='$tags',Amount_Exp='$AmExp',Final_Amount='$fAmount',recorded_date='$dater', updated_date=CURRENT_DATE() where dr_id='$drid'";
+            $sql = "UPDATE daily_sales SET admin_id='$adm_id', units='$units',i_reading='$iR',f_reading='$fR',Amount='$iAmount',Expenditures='$tags',Amount_Exp='$AmExp',Final_Amount='$fAmount',recorded_date='$dater', updated_date=CURRENT_DATE() where dr_id='$drid'";
             if (mysqli_query($conn, $sql)) {
                 unset($_POST);
 
@@ -259,7 +261,7 @@ if (isset($_POST['uMR'])) {
 
             if (empty($error)) {
 
-                $sql = "UPDATE INTO mcustomer_sales SET  client_id='$client',i_reading='$iR',f_reading='$fR',client_name='$cn', units='$units', Amount='$camount',rate_per_unit='$rate', Expected_amount='$fAmount',amount_due='$due', start_date='$sdater',end_date='$endater',days_unit_spent='$days' where mr_id='$mrid'";
+                $sql = "UPDATE INTO mcustomer_sales SET admin_id='$adm_id', client_id='$client',i_reading='$iR',f_reading='$fR',client_name='$cn', units='$units', Amount='$camount',rate_per_unit='$rate', Expected_amount='$fAmount',amount_due='$due', start_date='$sdater',end_date='$endater',days_unit_spent='$days' where mr_id='$mrid'";
 
 
                 if (mysqli_query($conn, $sql)) {
@@ -287,7 +289,7 @@ if (isset($_POST['uMR'])) {
 
             if (empty($error)) {
 
-                $sql = "UPDATE mcustomer_sales SET  client_id='$client',client_name='$cn',i_reading='$iR',f_reading='$fR', units='$units', Amount='$camount', rate_per_unit='$rate',Expected_amount='$fAmount',amount_due='$due', quittance='$due', start_date='$sdater',end_date='$endater', days_unit_spent='$days' where mr_id='$mrid'";
+                $sql = "UPDATE mcustomer_sales SET admin_id='$adm_id', client_id='$client',client_name='$cn',i_reading='$iR',f_reading='$fR', units='$units', Amount='$camount', rate_per_unit='$rate',Expected_amount='$fAmount',amount_due='$due', quittance='$due', start_date='$sdater',end_date='$endater', days_unit_spent='$days' where mr_id='$mrid'";
 
 
                 if (mysqli_query($conn, $sql)) {

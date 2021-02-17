@@ -3,7 +3,7 @@
 include '../authentication/config.php';
 require  'session.php';
 $drid=$_GET['recordno'];
-
+$adm_id=$_SESSION['id'];
 $date2 = new DateTime('Y');
 $dt2=$date2->format('Y');
 $value = date('n', $time);

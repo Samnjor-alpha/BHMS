@@ -220,7 +220,7 @@ include 'query.php';
                                                     <th>Amount due</th>
                                                     <th>Date from:</th>
                                                     <th>Date to:</th>
-
+                                                    <th>Recorded by:</th>
                                                 </tr>
                                                 </thead>
 
@@ -267,6 +267,17 @@ include 'query.php';
                                                             echo $fdate;
 
 
+                                                            ?></td>
+                                                        <td class="text-monospace"><?php
+                                                            $a_id=$c_row['admin_id'];
+                                                            $rec_details = "SELECT * FROM admin_user where a_id='$a_id'";
+                                                            $result_record=mysqli_query($conn,$rec_details);
+                                                            if (mysqli_num_rows($result_record)>0){
+                                                                $row_rec = $result_record->fetch_assoc();
+                                                                echo $row_rec['username'];}
+                                                            else{
+                                                                echo "Unknown";
+                                                            }
                                                             ?></td>
                                                     </tr>
 
@@ -343,7 +354,7 @@ include 'query.php';
                                                 $result_sale = mysqli_query($conn, $sql_sale);
                                                 if (mysqli_num_rows($result_sale) <1) {
                                                     echo"<div class='alert  alert-warning alert-dismissible'>";
-                                                    echo"<p>No sales found in that date range</p>";
+                                                    echo"<p>No records found in that date range</p>";
 
                                                     echo"</div>";
                                                 }else{
@@ -375,6 +386,7 @@ include 'query.php';
                                                     <th>Amount due</th>
                                                     <th>Date from:</th>
                                                     <th>Date to:</th>
+                                                    <th>Recorded by:</th>
 
                                                                 </tr>
                                                                 </thead>
@@ -400,7 +412,19 @@ include 'query.php';
                                                                             echo $c_row['start_date'];
                                                                             ?></td>
                                                                         <td class="small"><?php
+
                                                                             echo $c_row['end_date'];                                         ?></td>
+                                                                        <td class="text-monospace"><?php
+                                                                            $a_id=$c_row['admin_id'];
+                                                                            $rec_details = "SELECT * FROM admin_user where a_id='$a_id'";
+                                                                            $result_record=mysqli_query($conn,$rec_details);
+                                                                            if (mysqli_num_rows($result_record)>0){
+                                                                                $row_rec = $result_record->fetch_assoc();
+                                                                                echo $row_rec['username'];}
+                                                                            else{
+                                                                                echo "Unknown";
+                                                                            }
+                                                                            ?></td>
                                                                     </tr>
 
                                                                 <?php }?>
@@ -515,6 +539,7 @@ include 'query.php';
                                                     <th>Amount due</th>
                                                     <th>Date from:</th>
                                                     <th>Date to:</th>
+                                                    <th>Recorded by:</th>
 
                                                                 </tr>
                                                                 </thead>
@@ -541,8 +566,19 @@ include 'query.php';
                                                                             ?></td>
                                                                         <td class="small"><?php
                                                                             echo $c_row['end_date'];                                         ?></td>
-                                                                    </tr>
 
+                                                                       <td class="text-monospace"><?php
+                                                                            $a_id=$c_row['admin_id'];
+                                                                            $rec_details = "SELECT * FROM admin_user where a_id='$a_id'";
+                                                                            $result_record=mysqli_query($conn,$rec_details);
+                                                                            if (mysqli_num_rows($result_record)>0){
+                                                                                $row_rec = $result_record->fetch_assoc();
+                                                                                echo $row_rec['username'];}
+                                                                            else{
+                                                                                echo "Unknown";
+                                                                            }
+                                                                            ?></td>
+                                                                    </tr>
                                                                 <?php }?>
 
                                                                 <tr><td colspan="1">Total units:</td>

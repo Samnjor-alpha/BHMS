@@ -2,6 +2,7 @@
 
 $_SESSION['msg'] = "";
 $_SESSION['msg_class'] = "";
+$adm_id=$_SESSION['id'];
 function createBillno2() {
     $chars = "003232303232023232023456789";
     srand((double)microtime()*1000000);
@@ -80,7 +81,7 @@ if (isset($_POST['SMR'])) {
 
                     if (empty($error)) {
 
-                        $sql = "INSERT INTO mcustomer_sales SET  client_id='$client',bill_no='$billno',i_reading='$iR',f_reading='$fR',client_name='$cn', units='$units', Amount='$camount',rate_per_unit='$rate', Expected_amount='$fAmount',amount_due='$due', start_date='$sdater',end_date='$endater',days_unit_spent='$days'";
+                        $sql = "INSERT INTO mcustomer_sales  SET admin_id='$adm_id', client_id='$client',bill_no='$billno',i_reading='$iR',f_reading='$fR',client_name='$cn', units='$units', Amount='$camount',rate_per_unit='$rate', Expected_amount='$fAmount',amount_due='$due', start_date='$sdater',end_date='$endater',days_unit_spent='$days'";
 
 
                         if (mysqli_query($conn, $sql)) {
@@ -114,7 +115,7 @@ if (isset($_POST['SMR'])) {
 
                         if (empty($error)) {
 
-                            $sql = "INSERT INTO mcustomer_sales SET  client_id='$client',bill_no='$billno',client_name='$cn',i_reading='$iR',f_reading='$fR', units='$units', Amount='$camount', rate_per_unit='$rate',Expected_amount='$fAmount', quittance='$due', start_date='$sdater',end_date='$endater', days_unit_spent='$days'";
+                            $sql = "INSERT INTO mcustomer_sales SET SET admin_id='$adm_id', client_id='$client',bill_no='$billno',client_name='$cn',i_reading='$iR',f_reading='$fR', units='$units', Amount='$camount', rate_per_unit='$rate',Expected_amount='$fAmount', quittance='$due', start_date='$sdater',end_date='$endater', days_unit_spent='$days'";
 
 
                             if (mysqli_query($conn, $sql)) {

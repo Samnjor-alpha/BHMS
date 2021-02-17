@@ -1,7 +1,7 @@
 <?php
 $msg = "";
 $msg_class = "";
-
+$adm_id=$_SESSION['id'];
 if (isset($_POST['SR'])) {
     if (empty($_POST['token'])&& empty($_SESSION['crsftoken'])) {
 
@@ -49,7 +49,7 @@ if (isset($_POST['SR'])) {
                 } else {
                     if (empty($error)) {
 
-                        $sql = "INSERT INTO daily_sales SET  units='$units',i_reading='$iR',f_reading='$fR',Amount='$iAmount',Expenditures='$tags',Amount_Exp='$AmExp',Final_Amount='$fAmount',recorded_date='$dt2'";
+                        $sql = "INSERT INTO daily_sales SET  admin_id='$adm_id',units='$units',i_reading='$iR',f_reading='$fR',Amount='$iAmount',Expenditures='$tags',Amount_Exp='$AmExp',Final_Amount='$fAmount',recorded_date='$dt2'";
                         //$sql = "INSERT INTO daily_sales(dr_id,units,i_reading,f_reading,Amount,Expenditures,Amount_Exp,Final_Amount,recorded_date) values (UUID(),$units,$iR,$fR,$iAmount,$tags,$AmExp,$fAmount,$dt2)";
                         if (mysqli_query($conn, $sql)) {
                             unset($_POST);
