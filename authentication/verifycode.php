@@ -3,6 +3,7 @@ $msg="";
     $msg_class="";
 
 if(isset($_POST['verify'])){
+    date_default_timezone_set("Africa/Nairobi");
     $vcode=$_POST['vcode'];
     $ad_id=$_SESSION['id'];
     $actual_minute = date("i");
