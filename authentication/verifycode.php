@@ -12,9 +12,12 @@ if(isset($_POST['verify'])){
     if (mysqli_num_rows($resultverify)>0){
 $row_verify=$resultverify->fetch_assoc();
 $xdate=$row_verify['expDate'];
-    $checkdate = strtotime($row_verify['expDate']);
+    $checkdate = $row_verify['expDate'];
+        $date2 = new DateTime($checkdate);
+        $dt2=$date2->format('Y-m-d');
 
-    if ($checkdate - time() > 15*60) {
+        $td= date('Y-m-d');
+        if ($dt2<$td){
         $msg="Code is expired.Request a new one";
         $msg_class="alert-danger";
     }else{
