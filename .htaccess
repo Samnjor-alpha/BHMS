@@ -1,5 +1,5 @@
 
-php_value date.timezone 'Africa/Nairobi'
+#php_value date.timezone 'Africa/Nairobi'
 DirectoryIndex authentication
 ErrorDocument 400 /Error/401.php
 ErrorDocument 401 /Error/401.php
