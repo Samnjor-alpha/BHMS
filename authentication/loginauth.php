@@ -76,9 +76,9 @@ if(isset($_POST['signin'])){
                         $_SESSION['bhmstoken'] = $token;
                         //send verification code to email
 
-               include 'sendcode.php';
+                        include 'sendcode.php';
 
-                   }else{
+                    } else {
 
                         $msg = "application failed to initiate session.Try again!";
                         $msg_class = "alert-danger";
@@ -94,31 +94,34 @@ if(isset($_POST['signin'])){
                     $unlogged="SELECT * FROM sessions WHERE admin_id='$sid' AND logged_in='0' AND created_at=CURRENT_DATE()";
                     $result_unlogged=mysqli_query($conn,$unlogged);
                     if(mysqli_num_rows($result_unlogged)>0){
-                        $update_unloggedtoken="UPDATE sessions SET session_token = '$token' where admin_id='$sid' AND logged_in='0' AND created_at=CURRENT_DATE()";
+                        $update_unloggedtoken = "UPDATE sessions SET session_token = '$token' where admin_id='$sid' AND logged_in='0' AND created_at=CURRENT_DATE()";
                         if (mysqli_query($conn, $update_unloggedtoken)) {
 
                             $_SESSION['bhmstoken'] = $token;
 
                             include 'sendcode.php';
-                        }else{
+                        } else {
                             $msg = "Failed to create session";
                             $msg_class = "alert-danger";
                         }
-                    }else{
-                        $update_unloggedtoken="UPDATE sessions SET session_token = '$token' where admin_id='$sid'AND logged_in='1' created_at=CURRENT_DATE()";
-                        if (mysqli_query($conn, $update_unloggedtoken)) {
+                    }
+                    $loggedtoken = "SELECT * FROM sessions WHERE admin_id='$sid' AND logged_in='1' AND created_at=CURRENT_DATE()";
+                    $result_logged = mysqli_query($conn, $loggedtoken);
+                    if (mysqli_num_rows($result_logged) > 0) {
+                        $update_loggedtoken = "UPDATE sessions SET session_token = '$token' where admin_id='$sid' AND logged_in='1' AND created_at=CURRENT_DATE()";
+                        if (mysqli_query($conn, $update_loggedtoken)) {
 
                             $_SESSION['bhmstoken'] = $token;
 
                             header('Location:../Dashboard/home.php');
-                        }else{
+                        } else {
                             $msg = "application failed to initiate session.Try again!";
                             $msg_class = "alert-danger";
                         }
                     }
 
-}
- }else{
+                }
+            } else {
 
                 $msg = "An Error occured in the database!";
                 $msg_class = "alert-danger";
