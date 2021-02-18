@@ -1,3 +1,10 @@
+<?php
+include 'config.php';
+include '../Dashboard/session.php';
+include 'verifycode.php';
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,15 +14,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Login</title>
-    
+    <title>Two Factor auth</title>
+
     <link href="../dist/css/styles.css" rel="stylesheet" />
-    <script src="../dist/js/swal.js"></script>
 
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 </head>
-<?php include 'loginauth.php'?>
 <style>
     body{
 
@@ -38,16 +43,6 @@
     }
 
 </style>
-<script type="text/javascript">
-    function showpwd() {
-  var x = document.getElementById("password");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-} 
-</script>
 <body class="sb-nav-fixed">
 <main>
     <div id="login">
@@ -58,7 +53,7 @@
                     <div id="login-box" class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
 
                         <form id="login-form" class="form" action="" method="post">
-                            <h3 class="text-center text-info">Login</h3>
+                            <h3 class="text-center text-info">Verify Code</h3>
                             <div>
                                 <?php if (!empty($msg)): ?>
                                     <div class="alert <?php echo $msg_class ?> alert-dismissible fade show" role="alert">
@@ -69,42 +64,19 @@
                                     </div>
                                 <?php endif; ?>
                             </div>
-                            <div>
-                                <?php if (!empty($_SESSION['msg'])): ?>
-                                    <div class="alert <?php echo $_SESSION['msg_class'] ?> alert-dismissible fade show col justify-content-center align-items-center text-center" id="login-box" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <?php echo $_SESSION['msg']; ?>
-                                    </div>
-                                <?php endif; ?>
-                                <?php
-                                unset($_SESSION['msg']);
-                                unset($_SESSION['msg_class'])
-                                ?>
-                            </div>
+
                             <div class="form-group">
-                                <label for="email" >Email:</label><br>
-                                <input type="email" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : ''; ?>" id="email" class="form-control" required>
+                                <label for="vcode"  class="align-content-center">Enter Code:</label><br>
+                                <input type="number" name="vcode" value="<?= isset($_POST['vcode']) ? $_POST['vcode'] : ''; ?>" id="vcode" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label for="password" >Password:</label><br>
-                                <input type="password" name="password" id="password" class="form-control" required>
-                            </div>
-                              <div class="form-group">
-                                
-                                <input type="checkbox" onclick="showpwd()"> Show Password
-                            </div>
+
                             <div class="form-group">
 
-                                <input type="submit" name="signin" class="btn btn-info btn-block" value="Sign in">
+                                <input type="submit" name="verify" class="btn btn-info btn-block" value="Verify">
                             </div>
 
                         </form>
-                        <div class="form-group">
 
-                            <a class="alert-link" href="resetpassword.php">Forgot password?</a>
-                        </div>
                     </div>
                 </div>
             </div>

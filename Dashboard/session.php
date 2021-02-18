@@ -44,7 +44,7 @@ if (mysqli_num_rows($result_atv) < 1){
             /**
              * for a 10 minute timeout, specified in seconds
              */
-            $timeout_duration = 300;
+            $timeout_duration = 900;
 
             /**
              * Here we look for the user's LAST_ACTIVITY timestamp. If

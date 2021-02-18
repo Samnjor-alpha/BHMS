@@ -8,7 +8,7 @@
 <script src="../dist/js/scripts.js"></script>
 <script src="../dist/js/tags.js"></script>
 <script type="text/javascript">
-    var idleMax = 5; // Logout after 30 minutes of IDLE
+    var idleMax = 15; // Logout after 30 minutes of IDLE
     var idleTime = 0;
 
     var idleInterval = setInterval("timerIncrement()", 60000);  // 1 minute interval
