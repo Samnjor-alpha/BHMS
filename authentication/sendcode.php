@@ -1,7 +1,6 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/phpmailer/phpmailer/src/Exception.php';
 require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
@@ -23,7 +22,6 @@ date("H"), date("i")+15, date("s"), date("m") ,date("d"), date("Y")
 $expDate = date("Y-m-d H:i:s",$expFormat);
 
 
-
 // Insert Temp Table
 
 $mail = new PHPMailer;
@@ -34,23 +32,23 @@ $mail = new PHPMailer(true);
 $mail->IsSMTP();
 $mail->SMTPDebug = 0;
 $mail->SMTPAuth = true;
-$mail->SMTPSecure = 'ssl';
-$mail->Host = "smtp.gmail.com";
-$mail->Port = 465; // or 587
+$mail->Host = "smtp.sendgrid.net";
+$mail->SMTPSecure = 'tls';
+$mail->Port = 587;
 $mail->IsHTML(true);
-$mail->Username = 'samnjorm@gmail.com';
-$mail->Password = 'samnjormessy';
-$mail->setFrom('myemail@gmail.com');
+$mail->Username = 'apikey';
+$mail->Password = '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';
+$mail->setFrom('tomaiwatersupplies@hi2.in');
 $mail->addAddress($row['email']);
 $subject = "Verification Code - Tomai water supplies";
 $body = file_get_contents('email_template.html');
 $body = str_replace('$vcodee', $vcodee, $body);
 
 // strip backslashes
-$body = preg_replace('/\\\\/','', $body);
+$body = preg_replace('/\\\\/', '', $body);
 // mail settings below including these:
 $mail->MsgHTML($body);
-$mail->Subject= $subject;
+$mail->Subject = $subject;
 $mail->IsHTML(true); // send as HTML
 $mail->CharSet="utf-8"; // use utf-8 character encoding
 

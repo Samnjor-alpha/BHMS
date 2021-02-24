@@ -15,7 +15,7 @@ $dt2 = new DateTime($readings['end_date']);
 
 $d2 = $dt2->format('D,d-M-Y');
 $td1 = new DateTime();
-$td = $td1->format('D, d-M-Y');
+$td = $td1->format('D, d- M Y');
 $dt2 = new DateTime($readings['end_date']);
 $d2 = $dt2->format('D,d-M-Y');
 $duedate = date('D , d M Y', strtotime(' + 5 days'));
@@ -30,37 +30,44 @@ class Invoice extends PDF_Rotate
 
         $this->SetFont('brandon-grotesque-regular', 'B', 20);
         $this->Cell(30);
-        //$this->SetTextColor(22, 200, 224);
+        $this->SetTextColor(255, 255, 255);
         $this->SetDrawColor(0, 0, 0);
+        $this->ClippingRoundedRect(0, 0, 150, 25, 0);
+
+        //Rect(1, 1,145,25);
+        $this->Image('../dist/assets/img/header.png', 0, 0, 150, 25);
         $this->Cell(30, 10, $strh, 0, 1, 'L');
 
-        $this->Rect(5, 5, 140, 200, 'D');
 
-        $this->Line(10, 20, 140, 20);
+        //$this->Line(10, 20, 140, 20);
         //$this->Ln(10);
+        $this->SetFillColor(0, 255, 0);
 
 
-//Put the watermark
+        $this->UnsetClipping();
     }
 
     function bill_to($invoiceC)
     {
-        $this->SetFont('brandon-grotesque-regular', 'B', 10);
-        $this->setXY(1, 25);
-        $this->SetFillColor(105, 105, 105);
+        $this->SetFont('brandonGrotesque-Bold', 'B', 10);
+        $this->setXY(1, 30);
+        $this->SetFillColor(69, 69, 69);
 
         $this->Cell(10, 20, '', '', 0, 'C');
 
         $this->MultiCell(80, 5, $invoiceC, '', 'L');
+
     }
 
     function invoiceno($invoiceData)
     {
-        $this->SetFont('brandon-grotesque-regular', 'B', 10);
+        $this->SetFont('brandonGrotesque-Bold', 'B', 10);
         $x = $this->GetX();
-        $this->setXY(60, 25);
+        $this->setXY(60, 30);
         $this->SetDrawColor(0, 0, 0);
         //$this->setTextcolor(255,255,255)
+        $this->Line(83, 30, 83, 40);
+        // $this->SetLineWidth(5);
         $this->cell(25, 0, '', '', 0, '');
         $y = $this->GetY();
         $this->MultiCell(70, 5, $invoiceData, '', 'J');
@@ -71,14 +78,14 @@ class Invoice extends PDF_Rotate
 
     function populate_invoicedetails($data)
     {
-        $this->SetFont('brandon-grotesque-regular', 'B', 8);
+        $this->SetFont('brandon-grotesque-regular', 'B', 10);
         $this->Cell(50, 15, '', '', '1', 'C');
         $x = $this->GetX();
         $y = $this->GetY();
         $this->setXY($x, $y);
-
-        $this->Cell(40, 12, 'Prev. Reading', 'TL', 0, 'L', true);
-        $this->setXY($x + 30, $y);
+//$this->setTextcolor(255,255,255)
+        $this->Cell(30, 12, 'Prev. Reading', 'TL', 0, 'L', true);
+        $this->setXY($x + 25, $y);
         $this->Cell(30, 12, 'CurrentReading', 'T', 2, 'L', true);
         $this->setXY($x + 50, $y);
         $this->Cell(20, 12, 'Units', 'T', 2, 'L', true);
@@ -121,31 +128,21 @@ class Invoice extends PDF_Rotate
         $this->SetFont('brandonGrotesque-Bold', 'B', 10);
         $x = $this->GetX();
         $y = $this->GetY();
-        $this->setXY(15, 43);
-        $this->SetFillColor(210, 225, 225);
+        $this->setXY(15, 47);
+        $this->SetFillColor(13, 13, 13);
+        $this->SetTextColor(255, 255, 255);
         $this->cell(30, 5, '', '', 0);
-
-        $this->MultiCell(60, 5, $datecharge, 0, 'J', true);
+        $this->RoundedRect(40, 47, 65, 5, 5, 13, 'DF');
+        $this->MultiCell(60, 5, $datecharge, 0, 'J');
         $this->Ln(2);
     }
 
-    function nb($nb)
-    {
-        $this->SetFont('brandonGrotesque-Bold', 'B', 10);
-        $x = $this->GetX();
-        $y = $this->GetY();
-        $this->setXY(10, 120);
-        $this->SetFillColor(210, 225, 225);
-        $this->cell(30, 5, 'Note:', '', 0, 'C');
-
-        $this->MultiCell(60, 7, $nb, 0, 'J', true);
-        $this->Ln(2);
-    }
 
     function Footer()
     {
         global $duedatenote;
         $this->SetY(-15);
+        $this->SetTextColor(0, 0, 0);
         $this->SetFont('brandonGrotesque-Bold', 'B', 8);
         $this->Cell(0, 10, $duedatenote, 0, 0, 'C');
     }
@@ -160,14 +157,19 @@ $pdf->AddFont('brandonGrotesque-Bold', 'B', 'BrandonGrotesque-Bold.php');
 $pdf->AddPage();
 //$pdf->Rect(5, 15, 110,100,'D');
 $pdf->SetFont('brandon-grotesque-regular', 'B', 14);
-
+$pdf->ClippingRoundedRect(0, 25, 150, 155, 0);
+$pdf->Image('../dist/assets/img/bg.png', 0, 25, 150, 155);
+//$pdf->Image('clips.jpg',40,100,130);
+$pdf->UnsetClipping();
 $pdf->invoiceno('INVOICE                 :     # ' . $readings['bill_no'] . chr(10) . 'INVOICE DATE   :   ' . $td);
 $pdf->bill_to('NAME            :   ' . $cust_row['fname'] . ' ' . $cust_row['lname'] . chr(10) . 'BIZNAME      :  ' . $cust_row['biz_name'] . chr(10));
-$pdf->headtitle('Meter Reading date : ' . $d2);
 $pdf->populate_invoicedetails($invoiceData);
+$pdf->headtitle('Meter Reading date : ' . $d2);
+
 //$pdf->nb('The invoice date represents the date the invoice was generated from the system.');
 $fileName = $readings['bill_no'] . '-' . $cust_row['biz_name'] . '.pdf';
 $pdf->SetAuthor('System Generated');
+
 $pdf->Output('', $fileName);
 
 ob_end_flush();

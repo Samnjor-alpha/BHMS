@@ -1,7 +1,6 @@
 <?php include 'loginauth.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/phpmailer/phpmailer/src/Exception.php';
 require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
@@ -52,23 +51,23 @@ if(isset($_POST["email"]) && (!empty($_POST["email"]))){
         $mail->IsSMTP();
         $mail->SMTPDebug = 0;
         $mail->SMTPAuth = true;
-        $mail->SMTPSecure = 'ssl';
-        $mail->Host = "smtp.gmail.com";
-        $mail->Port = 465; // or 587
+        $mail->Host = "smtp.sendgrid.net";
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
         $mail->IsHTML(true);
-        $mail->Username = 'samnjorm@gmail.com';
-        $mail->Password = 'samnjormessy';
-        $mail->setFrom('myemail@gmail.com');
+        $mail->Username = 'apikey';
+        $mail->Password = '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';
+        $mail->setFrom('tomaiwatersupplies@hi2.in');
         $mail->addAddress($email);
-        $output='<p>Dear Admin,</p>';
-        $output.='<p>Please click on the following link to reset your password.</p>';
-        $output.='<p>-------------------------------------------------------------</p>';
-        $output.='<p><a href="http://bhms.herokuapp.com/authentication/changepassword?key='.$key.'&email='.$email.'&action=reset" target="_blank">
-http://bhms.herokuapp.com/authentication/changepassword?key='.$key.'&email='.$email.'&action=reset</a></p><br>';
-        $output.='<p>-------------------------------------------------------------</p>';
-        $output.='<p>Please be sure to copy the entire link into your browser.
+        $output = '<p>Dear Admin,</p>';
+        $output .= '<p>Please click on the following link to reset your password.</p>';
+        $output .= '<p>-------------------------------------------------------------</p>';
+        $output .= '<p><a href="http://bhms.herokuapp.com/authentication/changepassword?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">
+http://bhms.herokuapp.com/authentication/changepassword?key=' . $key . '&email=' . $email . '&action=reset</a></p><br>';
+        $output .= '<p>-------------------------------------------------------------</p>';
+        $output .= '<p>Please be sure to copy the entire link into your browser.
 The link will expire after 1 day for security reason.</p>';
-        $output.='<p>If you did not request this forgotten password email, no action 
+        $output .= '<p>If you did not request this forgotten password email, no action 
 is needed, your password will not be reset. However, you may want to log into 
 your account and change your security password as someone may have guessed it.</p>';
         $output.='<p>Thanks,</p>';

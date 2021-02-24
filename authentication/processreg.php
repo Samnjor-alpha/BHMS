@@ -1,7 +1,6 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/phpmailer/phpmailer/src/Exception.php';
 require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
@@ -77,30 +76,31 @@ if (isset($_POST['signup'])) {
             // Upload image only if no errors
             if (empty($error)) {
 
-               
-                    $mail = new PHPMailer;
-                    $mail->isSMTP();
-                    $mail = new PHPMailer(true);
+
+                $mail = new PHPMailer;
+                $mail->isSMTP();
+                $mail = new PHPMailer(true);
 
 
-                    $mail->IsSMTP();
-                    $mail->SMTPDebug = 0;
-                    $mail->SMTPAuth = true;
-                    $mail->SMTPSecure = 'ssl';
-                    $mail->Host = "smtp.gmail.com";
-                    $mail->Port = 465; // or 587
-                    $mail->IsHTML(true);
-                    $mail->Username = 'samnjorm@gmail.com';
-                    $mail->Password = 'samnjormessy';
-                    $mail->setFrom('myemail@gmail.com');
-                    $mail->addAddress($email);
-                    $output='<p>Dear Admin,</p>';
-                    $output.='<p>Please click on the following link to verify your account.</p>';
-                    $output.='<p>-------------------------------------------------------------</p>';
-                    $output.='<p><a href="http://bhms.herokuapp.com/authentication/verify?token='.$user_registration_token.'&email='.$email.'&action=reset" target="_blank">
-http://bhms.herokuapp.com/authentication/verify?key='.$user_registration_token.'&email='.$email.'&action=reset</a></p><br>';
-                    $output.='<p>-------------------------------------------------------------</p>';
-                    $output.='<p>Please be sure to copy the entire link into your browser.
+                $mail->IsSMTP();
+                $mail->SMTPDebug = 0;
+                $mail->SMTPAuth = true;
+//                    $mail->SMTPSecure = 'ssl';
+                $mail->Host = "smtp.sendgrid.net";
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+                $mail->IsHTML(true);
+                $mail->Username = 'apikey';
+                $mail->Password = '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';
+                $mail->setFrom('tomaiwatersupplies@hi2.in');
+                $mail->addAddress($email);
+                $output = '<p>Dear Admin,</p>';
+                $output .= '<p>Please click on the following link to verify your account.</p>';
+                $output .= '<p>-------------------------------------------------------------</p>';
+                $output .= '<p><a href="http://bhms.herokuapp.com/authentication/verify?token=' . $user_registration_token . '&email=' . $email . '&action=reset" target="_blank">
+http://bhms.herokuapp.com/authentication/verify?key=' . $user_registration_token . '&email=' . $email . '&action=reset</a></p><br>';
+                $output .= '<p>-------------------------------------------------------------</p>';
+                $output .= '<p>Please be sure to copy the entire link into your browser.
 The link will expire after 1 day for security reason.</p>';
 
                     $output.='<p>Thanks,</p>';
