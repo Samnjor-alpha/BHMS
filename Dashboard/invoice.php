@@ -165,7 +165,7 @@ $pdf->invoiceno('INVOICE                 :     # ' . $readings['bill_no'] . chr(
 $pdf->bill_to('NAME            :   ' . $cust_row['fname'] . ' ' . $cust_row['lname'] . chr(10) . 'BIZNAME      :  ' . $cust_row['biz_name'] . chr(10));
 $pdf->headtitle('Meter Reading date : ' . $d2);
 $pdf->populate_invoicedetails($invoiceData);
-$pdf->nb('The invoice date represents the date the invoice was generated from the system.');
+//$pdf->nb('The invoice date represents the date the invoice was generated from the system.');
 $fileName = $readings['bill_no'] . '-' . $cust_row['biz_name'] . '.pdf';
 $pdf->SetAuthor('System Generated');
 $pdf->Output('', $fileName);
