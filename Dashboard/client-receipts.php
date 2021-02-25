@@ -68,6 +68,7 @@ $sql = mysqli_query($conn, "SELECT * FROM mcustomer_sales WHERE client_id='$cid'
                                         <div class="row">
                                             <div class="col text-left">
                                             <?php
+                                            $s_row['mr_id'];
                                             $date = new DateTime($s_row['start_date']);
                                             echo $dt1=$date->format('D, d,M y');?></div>
                                             <p class=" col text-center">To</p>
@@ -79,21 +80,25 @@ $sql = mysqli_query($conn, "SELECT * FROM mcustomer_sales WHERE client_id='$cid'
                                     </div>
                                     <div id="collapse<?php echo $i; ?>" class="collapse <?php if ($i==1) { echo 'show'; } ?>" data-parent="#accordion">
                                         <div class="card-body">
-                                        <div class="row">
+                                            <div class="row">
 
-                                  <div class="col">
-                        <p>Amount:<? echo 'ksh. '.formatMoney($s_row['Amount'],true);?></p>
-                                        </div>
-                                            <div class="col">
-                                                <p>Units:<?echo  $s_row['units'].' '.'m<sup>3</sup>'?></p>
-                                            </div>
-                                            <div class="col">
-                                                <a class="btn btn-success btn-sm" href="generate_receipt.php?cno=<?php echo $s_row['client_id']?>&date1=<?php echo $s_row['start_date']?>&date2=<?php echo $s_row['end_date'] ?>">Generate Receipt</a>
+                                                <div class="col">
+                                                    <p>
+                                                        Amount:<? echo 'ksh. ' . formatMoney($s_row['Amount'], true); ?></p>
+                                                </div>
+                                                <div class="col">
+                                                    <p>Units:<? echo $s_row['units'] . ' ' . 'm<sup>3</sup>' ?></p>
+                                                </div>
+                                                <div class="col">
+                                                    <a class="btn btn-success btn-sm"
+                                                       href="invoice.php?invoice=<?php echo $s_row['mr_id'] ?>&vip=<? echo $cid ?>"
+                                                       class="btn btn-sm btn-success">Generate Receipt</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <?php $i++;}?>
+                                    <?php $i++;
+                                    }?>
 
 
                             </div>

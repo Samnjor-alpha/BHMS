@@ -66,14 +66,14 @@ class Invoice extends PDF_Rotate
         $x = $this->GetX();
         $this->setXY(60, 30);
         $this->SetDrawColor(0, 0, 0);
-        $this->setTextcolor(255, 255, 240);
+        // $this->setTextcolor(255, 255, 240);
         $this->Line(83, 30, 83, 40);
         // $this->SetLineWidth(5);
         $this->cell(25, 0, '', '', 0, '');
         $y = $this->GetY();
         // $this->SetDrawColor(24,141,170);
-        $this->ClippingRoundedRect(1, 27, 145, 20, 4, false);
-        $this->Image('../dist/assets/img/header.png', 1, 27, 145, 20);
+        $this->ClippingRoundedRect(1, 27, 145, 20, 4, true);
+        //$this->Image('../dist/assets/img/header.png', 1, 27, 145, 20);
         $this->MultiCell(70, 5, $invoiceData, '', 'J');
         //$this->Line(10, 45, 135, 45);
 
