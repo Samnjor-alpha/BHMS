@@ -32,13 +32,16 @@ $mail = new PHPMailer(true);
 $mail->IsSMTP();
 $mail->SMTPDebug = 0;
 $mail->SMTPAuth = true;
-$mail->Host = "smtp.sendgrid.net";
-$mail->SMTPSecure = 'tls';
-$mail->Port = 587;
+$mail->SMTPSecure = 'ssl';
+$mail->Host = "smtp.gmail.com";
+$mail->Port = 465; // or 587
 $mail->IsHTML(true);
-$mail->Username = 'apikey';
-$mail->Password = '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';
-$mail->setFrom('tomaiwatersupplies@hi2.in');
+$mail->Username = 'samnjorm@gmail.com';
+$mail->Password = 'samnjormessy';
+try {
+    $mail->setFrom('myemail@gmail.com');
+} catch (\PHPMailer\PHPMailer\Exception $e) {
+}
 $mail->addAddress($row['email']);
 $subject = "Verification Code - Tomai water supplies";
 $body = file_get_contents('email_template.html');

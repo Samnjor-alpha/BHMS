@@ -51,13 +51,13 @@ if(isset($_POST["email"]) && (!empty($_POST["email"]))){
         $mail->IsSMTP();
         $mail->SMTPDebug = 0;
         $mail->SMTPAuth = true;
-        $mail->Host = "smtp.sendgrid.net";
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
+        $mail->SMTPSecure = 'ssl';
+        $mail->Host = "smtp.gmail.com";
+        $mail->Port = 465; // or 587
         $mail->IsHTML(true);
-        $mail->Username = 'apikey';
-        $mail->Password = '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';
-        $mail->setFrom('tomaiwatersupplies@hi2.in');
+        $mail->Username = 'samnjorm@gmail.com';
+        $mail->Password = 'samnjormessy';
+        $mail->setFrom('myemail@gmail.com');
         $mail->addAddress($email);
         $output = '<p>Dear Admin,</p>';
         $output .= '<p>Please click on the following link to reset your password.</p>';
