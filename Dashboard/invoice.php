@@ -28,14 +28,14 @@ class Invoice extends PDF_Rotate
     {
         $strh = 'TOMAI WATER SUPPLIES';
 
-        $this->SetFont('brandon-grotesque-regular', 'B', 20);
+        $this->SetFont('brandonGrotesque-Bold', 'B', 20);
         $this->Cell(30);
         $this->SetTextColor(255, 255, 255);
         $this->SetDrawColor(0, 0, 0);
         $this->ClippingRoundedRect(0, 0, 150, 25, 0);
 
         //Rect(1, 1,145,25);
-        $this->Image('../dist/assets/img/header.png', 0, 0, 150, 25);
+        $this->Image('../dist/assets/img/header1.png', 0, 0, 150, 25);
         $this->Cell(30, 10, $strh, 0, 1, 'L');
 
 
@@ -49,27 +49,31 @@ class Invoice extends PDF_Rotate
 
     function bill_to($invoiceC)
     {
-        $this->SetFont('brandonGrotesque-Bold', 'B', 10);
+        $this->SetFont('brandon-grotesque-regular', 'B', 10);
         $this->setXY(1, 30);
         $this->SetFillColor(69, 69, 69);
 
         $this->Cell(10, 20, '', '', 0, 'C');
 
         $this->MultiCell(80, 5, $invoiceC, '', 'L');
+        $this->UnsetClipping();
 
     }
 
     function invoiceno($invoiceData)
     {
-        $this->SetFont('brandonGrotesque-Bold', 'B', 10);
+        $this->SetFont('brandon-grotesque-regular', 'B', 10);
         $x = $this->GetX();
         $this->setXY(60, 30);
         $this->SetDrawColor(0, 0, 0);
-        //$this->setTextcolor(255,255,255)
+        $this->setTextcolor(255, 255, 240);
         $this->Line(83, 30, 83, 40);
         // $this->SetLineWidth(5);
         $this->cell(25, 0, '', '', 0, '');
         $y = $this->GetY();
+        // $this->SetDrawColor(24,141,170);
+        $this->ClippingRoundedRect(1, 27, 145, 20, 4, false);
+        $this->Image('../dist/assets/img/header.png', 1, 27, 145, 20);
         $this->MultiCell(70, 5, $invoiceData, '', 'J');
         //$this->Line(10, 45, 135, 45);
 
@@ -79,12 +83,14 @@ class Invoice extends PDF_Rotate
     function populate_invoicedetails($data)
     {
         $this->SetFont('brandon-grotesque-regular', 'B', 10);
-        $this->Cell(50, 15, '', '', '1', 'C');
+        $this->Cell(50, 30, '', '', '1', 'C');
         $x = $this->GetX();
         $y = $this->GetY();
         $this->setXY($x, $y);
-//$this->setTextcolor(255,255,255)
-        $this->Cell(30, 12, 'Prev. Reading', 'TL', 0, 'L', true);
+        $this->SetFillColor(24, 141, 170);
+        $this->SetDrawColor(24, 141, 170);
+        $this->setTextcolor(255, 255, 255);
+        $this->Cell(30, 12, 'Prev. Reading', 'TLR', 0, 'L', true);
         $this->setXY($x + 25, $y);
         $this->Cell(30, 12, 'CurrentReading', 'T', 2, 'L', true);
         $this->setXY($x + 50, $y);
@@ -101,13 +107,13 @@ class Invoice extends PDF_Rotate
             $x = $this->GetX();
             $y = $this->GetY();
             $this->setXY($x, $y);
-
-            $this->Cell(40, 12, $d["i_reading"], 'BL', 2, 'L');
+            $this->setTextcolor(0, 0, 0);
+            $this->Cell(30, 12, $d["i_reading"], 'BL', 2, 'C');
             $this->setXY($x + 30, $y);
             $this->Cell(30, 12, $d["f_reading"], 'B', 2, 'L');
             $this->setXY($x + 50, $y);
-            $this->Cell(20, 12, $d["units"], 0, 2, 'L');
-            $this->setXY($x + 60, $y);
+            $this->Cell(30, 12, $d["units"], 0, 2, 'J');
+            $this->setXY($x + 65, $y);
             $this->Cell(30, 12, 'ksh.' . $d["rate_per_unit"], 0, 2, 'L');
             $this->setXY($x + 80, $y);
             $this->Cell(30, 12, 'ksh.' . $price, 'RLB', 2, 'L');
@@ -118,6 +124,8 @@ class Invoice extends PDF_Rotate
         $x = $this->GetX();
         $y = $this->GetY();
         $this->setXY($x + 50, $y);
+        $this->SetFont('brandonGrotesque-Bold', 'B', 10);
+        $this->setTextcolor(255, 255, 255);
         $this->Cell(30, 12, 'Grand Total', 'TBL', 2, 'C', true);
         $this->setXY($x + 80, $y);
         $this->Cell(30, 12, 'ksh. ' . formatMoney($total, 2), 'RLTB', 2, 'L', true);
@@ -128,11 +136,11 @@ class Invoice extends PDF_Rotate
         $this->SetFont('brandonGrotesque-Bold', 'B', 10);
         $x = $this->GetX();
         $y = $this->GetY();
-        $this->setXY(15, 47);
-        $this->SetFillColor(13, 13, 13);
+        $this->setXY(15, 50);
+        $this->SetFillColor(24, 141, 170);
         $this->SetTextColor(255, 255, 255);
         $this->cell(30, 5, '', '', 0);
-        $this->RoundedRect(40, 47, 65, 5, 5, 13, 'DF');
+        $this->RoundedRect(40, 50, 65, 5, 5, 13, 'F');
         $this->MultiCell(60, 5, $datecharge, 0, 'J');
         $this->Ln(2);
     }
