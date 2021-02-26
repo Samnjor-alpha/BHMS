@@ -90,7 +90,7 @@ $sql = mysqli_query($conn, "SELECT * FROM mcustomer_sales WHERE client_id='$cid'
                                                     <td><? echo $s_row['units'] . ' ' . 'm<sup>3</sup>' ?></td>
                                                     <td><a class="btn btn-success btn-sm"
                                                            href="invoice.php?invoice=<?php echo $s_row['mr_id'] ?>&vip=<? echo $cid ?>">Generate
-                                                            Receipt</a></td>
+                                                            invoice</a></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
