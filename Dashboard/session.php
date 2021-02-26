@@ -14,6 +14,9 @@ if (mysqli_num_rows($result_atv) < 1){
 
     $_SESSION['msg'] = "Not authorised...";
     $_SESSION['msg_class'] = "alert-danger";
+    unset($_SESSION['bhmsemail']);
+    unset($_SESSION['bhmsuser']);
+    unset($_SESSION['bhmstoken']);
     header('location:../authentication');
 }else{
 
@@ -28,12 +31,13 @@ if (mysqli_num_rows($result_atv) < 1){
 
         if (!isset($_SESSION['bhmsemail'])) {
 
-            $del_stoken="DELETE  FROM sessions where admin_id='$as_id' and session_id = '$ssid'";
+            $del_stoken = "DELETE  FROM sessions where admin_id='$as_id' and session_id = '$ssid'";
 
-            unset($_SESSION['bhmsemail']);
-            unset($_SESSION['bhmsuser']);
-            unset($_SESSION['bhmstoken']);
+
             if (mysqli_query($conn, $del_stoken)) {
+                unset($_SESSION['bhmsemail']);
+                unset($_SESSION['bhmsuser']);
+                unset($_SESSION['bhmstoken']);
                 $_SESSION['msg_class'] = "alert-danger";
                 $_SESSION['msg'] = "Login to continue...";
                 header('location:../authentication');
@@ -57,12 +61,14 @@ if (mysqli_num_rows($result_atv) < 1){
                 unset($_SESSION['bhmsuser']);
                 unset($_SESSION['bhmstoken']);
 
-                $_SESSION['msg'] = "Your session has expired...";
-                $_SESSION['msg_class'] = "alert-danger";
+
 
                 $del_stoken="DELETE  FROM sessions where admin_id='$as_id' and session_id = '$ssid'";
 
                 if (mysqli_query($conn, $del_stoken)) {
+                    unset($_SESSION['bhmsemail']);
+                    unset($_SESSION['bhmsuser']);
+                    unset($_SESSION['bhmstoken']);
                     $_SESSION['msg'] = "Your session has expired...";
                     $_SESSION['msg_class'] = "alert-danger";
                     header('location:../authentication');

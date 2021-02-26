@@ -65,10 +65,10 @@ class Invoice extends PDF_Rotate
         $this->SetFont('brandon-grotesque-regular', 'B', 10);
         $x = $this->GetX();
         $this->setXY(60, 30);
-        $this->SetDrawColor(0, 0, 0);
-        // $this->setTextcolor(255, 255, 240);
-        $this->Line(83, 30, 83, 40);
-        // $this->SetLineWidth(5);
+
+        $this->SetDrawColor(24, 141, 170);
+        $this->setTextcolor(0, 159, 159);
+        $this->Line(81, 30, 81, 45);
         $this->cell(25, 0, '', '', 0, '');
         $y = $this->GetY();
         // $this->SetDrawColor(24,141,170);
@@ -82,9 +82,10 @@ class Invoice extends PDF_Rotate
 
     function populate_invoicedetails($data)
     {
-        $this->SetFont('brandon-grotesque-regular', 'B', 10);
+        $this->SetFont('brandonGrotesque-Bold', 'B', 10);
+
         $this->Cell(50, 30, '', '', '1', 'C');
-        $x = $this->GetX();
+        $x = 20;
         $y = $this->GetY();
         $this->setXY($x, $y);
         $this->SetFillColor(24, 141, 170);
@@ -104,10 +105,11 @@ class Invoice extends PDF_Rotate
         foreach ($data as $d) {
             $price = $d["rate_per_unit"] * $d["units"];
             $this->Ln(0);
-            $x = $this->GetX();
+            $x = 20;
             $y = $this->GetY();
             $this->setXY($x, $y);
-            $this->setTextcolor(0, 0, 0);
+            $this->SetFont('brandon-grotesque-regular', 'B', 10);
+            $this->setTextcolor(0, 159, 159);
             $this->Cell(30, 12, $d["i_reading"], 'BL', 2, 'C');
             $this->setXY($x + 30, $y);
             $this->Cell(30, 12, $d["f_reading"], 'B', 2, 'L');
@@ -121,7 +123,7 @@ class Invoice extends PDF_Rotate
             $i++;
         }
         $this->Ln(0);
-        $x = $this->GetX();
+        $x = 20;
         $y = $this->GetY();
         $this->setXY($x + 50, $y);
         $this->SetFont('brandonGrotesque-Bold', 'B', 10);
@@ -136,11 +138,11 @@ class Invoice extends PDF_Rotate
         $this->SetFont('brandonGrotesque-Bold', 'B', 10);
         $x = $this->GetX();
         $y = $this->GetY();
-        $this->setXY(15, 50);
+        $this->setXY(15, 55);
         $this->SetFillColor(24, 141, 170);
         $this->SetTextColor(255, 255, 255);
         $this->cell(30, 5, '', '', 0);
-        $this->RoundedRect(40, 50, 65, 5, 5, 13, 'F');
+        $this->RoundedRect(40, 55, 65, 5, 5, 13, 'F');
         $this->MultiCell(60, 5, $datecharge, 0, 'J');
         $this->Ln(2);
     }
@@ -150,7 +152,7 @@ class Invoice extends PDF_Rotate
     {
         global $duedatenote;
         $this->SetY(-15);
-        $this->SetTextColor(0, 0, 0);
+        $this->SetTextColor(0, 159, 159);
         $this->SetFont('brandonGrotesque-Bold', 'B', 8);
         $this->Cell(0, 10, $duedatenote, 0, 0, 'C');
     }
@@ -169,7 +171,7 @@ $pdf->ClippingRoundedRect(0, 25, 150, 155, 0);
 $pdf->Image('../dist/assets/img/bg.png', 0, 25, 150, 155);
 //$pdf->Image('clips.jpg',40,100,130);
 $pdf->UnsetClipping();
-$pdf->invoiceno('INVOICE                 :     # ' . $readings['bill_no'] . chr(10) . 'INVOICE DATE   :   ' . $td);
+$pdf->invoiceno('INVOICE                :   # ' . $readings['bill_no'] . chr(10) . 'INVOICE DATE   :   ' . $td);
 $pdf->bill_to('NAME            :   ' . $cust_row['fname'] . ' ' . $cust_row['lname'] . chr(10) . 'BIZNAME      :  ' . $cust_row['biz_name'] . chr(10));
 $pdf->populate_invoicedetails($invoiceData);
 $pdf->headtitle('Meter Reading date : ' . $d2);
