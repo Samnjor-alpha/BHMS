@@ -88,7 +88,7 @@ $sql = mysqli_query($conn, "SELECT * FROM mcustomer_sales WHERE client_id='$cid'
                                                 <tr>
                                                     <td><? echo 'ksh. ' . formatMoney($s_row['Amount'], true); ?></td>
                                                     <td><? echo $s_row['units'] . ' ' . 'm<sup>3</sup>' ?></td>
-                                                    <td><a class="btn btn-success btn-sm"
+                                                    <td><a class="btn btn-success btn-sm" target="_blank"
                                                            href="invoice.php?invoice=<?php echo $s_row['mr_id'] ?>&vip=<? echo $cid ?>">Generate
                                                             invoice</a></td>
                                                 </tr>
