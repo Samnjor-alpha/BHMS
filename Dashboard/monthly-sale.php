@@ -47,17 +47,8 @@ include 'process-data/csrf.php';
             <div class="container">
                 <div class="row justify-content-center align-items-center">
                     <div id="login-box" class="col-md-10" >
-                        <div>
-                            <?php if (!empty($_SESSION['msg'])): ?>
-                                <div class="alert <?php echo $_SESSION['msg_class'] ?> alert-dismissible fade show" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <?php echo $_SESSION['msg']; ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        <form action="" method="post" >
+
+                    <form action="" method="post" >
                             <input type="hidden" name="token" value="<?php echo $token; ?>" />
                             <div class="form-group">
                                 <label class="small mb-1" for="client">Client</label>

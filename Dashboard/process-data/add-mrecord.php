@@ -73,8 +73,9 @@ if (isset($_POST['SMR'])) {
             $dates_results = mysqli_query($conn, "SELECT * FROM mcustomer_sales where bill_no='$billno'");
             $date_row = $dates_results->fetch_assoc();
             if (mysqli_num_rows($dates_results) > 1) {
-                $_SESSION['msg'] = 'The bill for that date is already recorded';
-                $_SESSION['msg_class'] = 'alert-danger';
+                echo "<script type='text/javascript'>
+  					swal('', 'Bill for that date is already added!!!', 'error');
+</script>";
             } else {
                 if ($fAmount > $camount) {
                     $due = $fAmount - $camount;
@@ -115,7 +116,7 @@ if (isset($_POST['SMR'])) {
 
                         if (empty($error)) {
 
-                            $sql = "INSERT INTO mcustomer_sales SET SET admin_id='$adm_id', client_id='$client',bill_no='$billno',client_name='$cn',i_reading='$iR',f_reading='$fR', units='$units', Amount='$camount', rate_per_unit='$rate',Expected_amount='$fAmount', quittance='$due', start_date='$sdater',end_date='$endater', days_unit_spent='$days'";
+                            $sql = "INSERT INTO mcustomer_sales SET  admin_id='$adm_id', client_id='$client',bill_no='$billno',client_name='$cn',i_reading='$iR',f_reading='$fR', units='$units', Amount='$camount', rate_per_unit='$rate',Expected_amount='$fAmount', quittance='$due', start_date='$sdater',end_date='$endater', days_unit_spent='$days'";
 
 
                             if (mysqli_query($conn, $sql)) {
