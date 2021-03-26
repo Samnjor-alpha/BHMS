@@ -1,4 +1,3 @@
 <?php
-$conn = mysqli_connect("localhost", "theblend", "3tgrgCFSVWH", "theblend_borehole");
-
+$conn = mysqli_connect("remotemysql.com", "boZoXSiaGl", "vzzU6fUq0j", "boZoXSiaGl");
 //$conn = mysqli_connect("localhost", "root", "", "borehole");
