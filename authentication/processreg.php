@@ -83,7 +83,7 @@ if (isset($_POST['signup'])) {
 
 
                 $mail->IsSMTP();
-                $mail->SMTPDebug = 2;
+                $mail->SMTPDebug = 0;
                 $mail->SMTPAuth = true;
                 $mail->SMTPSecure = 'ssl';
                 $mail->Host = "mail.developforme.co.ke";
