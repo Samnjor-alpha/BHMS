@@ -56,7 +56,7 @@ if (isset($_POST['signup'])) {
                     $msg_class = "alert-danger";
                 }else{
 
-               
+
 
 
                     // check if passwords match
@@ -83,15 +83,15 @@ if (isset($_POST['signup'])) {
 
 
                 $mail->IsSMTP();
-                $mail->SMTPDebug = 0;
+                $mail->SMTPDebug = 2;
                 $mail->SMTPAuth = true;
                 $mail->SMTPSecure = 'ssl';
-                $mail->Host = "smtp.gmail.com";
+                $mail->Host = "mail.developforme.co.ke";
                 $mail->Port = 465; // or 587
                 $mail->IsHTML(true);
-                $mail->Username = 'samnjorm@gmail.com';
-                $mail->Password = 'samnjormessy';
-                $mail->setFrom('tomaiwatersupplies@hi2.in');
+                $mail->Username = 'bhmsnoreply@developforme.co.ke';
+                $mail->Password = '@dfm2021Ke.';
+                $mail->setFrom('bhmsnoreply@developforme.co.ke');
                 $mail->addAddress($email);
                 $output = '<p>Dear Admin,</p>';
                 $output .= '<p>Please click on the following link to verify your account.</p>';
@@ -121,7 +121,7 @@ The link will expire after 1 day for security reason.</p>';
                 if (mysqli_query($conn, $sql)) {
                     $msg = "Registered successfully.Check email for account activation";
                     $msg_class = "alert-success";
-                        
+
                     }
                 }
 

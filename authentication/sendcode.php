@@ -30,14 +30,16 @@ $mail = new PHPMailer(true);
 
 
 $mail->IsSMTP();
-$mail->SMTPDebug = 0;
+$mail->SMTPDebug = 2;
 $mail->SMTPAuth = true;
 $mail->SMTPSecure = 'ssl';
-$mail->Host = "smtp.gmail.com";
+$mail->Host = "mail.developforme.co.ke";
 $mail->Port = 465; // or 587
 $mail->IsHTML(true);
-$mail->Username = 'samnjorm@gmail.com';
-$mail->Password = 'samnjormessy';
+$mail->Username = 'bhmsnoreply@developforme.co.ke';
+$mail->Password = '@dfm2021Ke.';
+$mail->setFrom('bhmsnoreply@developforme.co.ke');
+
 try {
     $mail->setFrom('myemail@gmail.com');
 } catch (\PHPMailer\PHPMailer\Exception $e) {
