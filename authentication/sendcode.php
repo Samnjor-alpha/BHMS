@@ -33,7 +33,7 @@ $mail->IsSMTP();
 $mail->SMTPDebug = 0;
 $mail->SMTPAuth = true;
 $mail->SMTPSecure = 'ssl';
-$mail->Host = "lim104.truehost.cloud";
+$mail->Host = "mail.developforme.co.ke";
 $mail->Port = 465; // or 587
 $mail->IsHTML(true);
 $mail->Username = 'bhmsnoreply@developforme.co.ke';
