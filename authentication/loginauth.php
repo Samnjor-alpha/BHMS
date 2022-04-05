@@ -20,16 +20,8 @@ include 'config.php';
 // $date2 = new DateTime();
 // $dt2=$date2->format();
 
-// select * from your_table where  <> DATE(NOW());
-$del_ext="DELETE FROM sessions WHERE DATE(created_at) <> DATE(NOW())";
-mysqli_query($conn,$del_ext);
-$del_code="DELETE FROM auth_code WHERE DATE(expDate) <> DATE(NOW())";
-mysqli_query($conn,$del_code);
-if (isset($_POST['signin'])) {
-    if (empty($_POST['email']) || empty($_POST['password'])) {
-        $msg = "complete fields!";
-        $msg_class="alert-danger";
-    } }
+
+
 if(isset($_POST['signin'])){
     $username = $_POST['email'];
     $password = $_POST['password'];
@@ -61,72 +53,12 @@ if(isset($_POST['signin'])){
 
 
 
-            if (!empty($token)) {
 
-                $sid=$_SESSION['id'];
-                $sql_token = "SELECT * FROM sessions WHERE admin_id='$sid' AND created_at=CURRENT_DATE()";
-                $result_atv=mysqli_query($conn,$sql_token);
-
-                /*---------------------------------------------------*/
-                if (mysqli_num_rows($result_atv) < 1){
-
-                    $sqltoken = "INSERT sessions SET session_token = '$token', admin_id='$sid',created_at=CURRENT_DATE()";
-                    if (mysqli_query($conn, $sqltoken)) {
-
-                        $_SESSION['bhmstoken'] = $token;
                         //send verification code to email
-
-                        include 'sendcode.php';
-
-                    } else {
-
-                        $msg = "application failed to initiate session.Try again!";
-                        $msg_class = "alert-danger";
-                    }
+                        header('Location:../Dashboard/home.php');
 
 
-
-
-
-                }
-                /*---------------------------------------------------*/
-                else {
-                    $unlogged="SELECT * FROM sessions WHERE admin_id='$sid' AND logged_in='0' AND created_at=CURRENT_DATE()";
-                    $result_unlogged=mysqli_query($conn,$unlogged);
-                    if(mysqli_num_rows($result_unlogged)>0){
-                        $update_unloggedtoken = "UPDATE sessions SET session_token = '$token' where admin_id='$sid' AND logged_in='0' AND created_at=CURRENT_DATE()";
-                        if (mysqli_query($conn, $update_unloggedtoken)) {
-
-                            $_SESSION['bhmstoken'] = $token;
-
-                            include 'sendcode.php';
-                        } else {
-                            $msg = "Failed to create session";
-                            $msg_class = "alert-danger";
-                        }
-                    }
-                    $loggedtoken = "SELECT * FROM sessions WHERE admin_id='$sid' AND logged_in='1' AND created_at=CURRENT_DATE()";
-                    $result_logged = mysqli_query($conn, $loggedtoken);
-                    if (mysqli_num_rows($result_logged) > 0) {
-                        $update_loggedtoken = "UPDATE sessions SET session_token = '$token' where admin_id='$sid' AND logged_in='1' AND created_at=CURRENT_DATE()";
-                        if (mysqli_query($conn, $update_loggedtoken)) {
-
-                            $_SESSION['bhmstoken'] = $token;
-
-                            header('Location:../Dashboard/home.php');
-                        } else {
-                            $msg = "application failed to initiate session.Try again!";
-                            $msg_class = "alert-danger";
-                        }
-                    }
-
-                }
-            } else {
-
-                $msg = "An Error occured in the database!";
-                $msg_class = "alert-danger";
-
-            }
+                     }}}
 
 
 
@@ -143,14 +75,12 @@ if(isset($_POST['signin'])){
 
 
 
-        } else  if ($result->num_rows < 1) {
-            $msg = "Incorrect Email or password!!";
-            $msg_class = "alert-danger";
-        }
-    }
-
-    $conn->close();
 
 
-}
+
+
+
+
+
+
 ?>

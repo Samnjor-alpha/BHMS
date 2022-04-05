@@ -14,10 +14,10 @@ include 'query.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>View monthly sales</title>
-    <? include '../public/stylesheet.php'?>
+    <?php  include '../public/stylesheet.php'?>
     </head>
 <body class="sb-nav-fixed">
-<? include 'topbar.php'?>
+<?php  include 'topbar.php'?>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         <?php require 'sidebar.php';?>
@@ -668,9 +668,9 @@ include 'query.php';
 
         </main>
 
-        <? include '../public/footer.php'?>
+        <?php  include '../public/footer.php'?>
 
-        <? include '../public/scripts.php'?>
+        <?php  include '../public/scripts.php'?>
 
 
 </body>

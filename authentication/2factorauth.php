@@ -84,7 +84,7 @@ include 'verifycode.php';
     </div>
 
 </main>
-<? include '../public/scripts.php'?>
+<?php  include '../public/scripts.php'?>
 
 </body>
 </html>

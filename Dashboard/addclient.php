@@ -14,10 +14,10 @@ include 'query.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Add Customer</title>
-    <? include '../public/stylesheet.php'?>
+    <?php  include '../public/stylesheet.php'?>
 </head>
 <body class="sb-nav-fixed">
-<? include 'topbar.php'?>
+<?php  include 'topbar.php'?>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
       <?php require 'sidebar.php';?>
@@ -39,7 +39,7 @@ include 'query.php';
                     <!-- /.btn-group -->
                 </div>
             </div>
-            <? include 'process-data/add-client.php' ?>
+            <?php  include 'process-data/add-client.php' ?>
             <div class="container">
                 <div class="row justify-content-center align-items-center">
                     <div id="login-box" class="col">
@@ -119,7 +119,7 @@ include 'query.php';
 
         </main>
 
-    <? include '../public/footer.php'?>
+    <?php  include '../public/footer.php'?>
 
         <?php include '../public/scripts.php'?>
 

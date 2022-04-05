@@ -6,25 +6,25 @@ $_SESSION['msg'] = "";
 $_SESSION['msg_class'] = "";
 
 $atv = $_SESSION['id'];
-$sql_tv = "SELECT * FROM sessions WHERE admin_id='$atv' AND logged_in='1' AND created_at=CURRENT_DATE()";
-$result_atv = mysqli_query($conn, $sql_tv);
-
-
-if (mysqli_num_rows($result_atv) < 1){
-
-    $_SESSION['msg'] = "Not authorised...";
-    $_SESSION['msg_class'] = "alert-danger";
-    unset($_SESSION['bhmsemail']);
-    unset($_SESSION['bhmsuser']);
-    unset($_SESSION['bhmstoken']);
-    header('location:../authentication');
-}else{
-
-    $atv_row = $result_atv->fetch_assoc();
-
-    $ssid=$atv_row['session_id'];
-    $as_id=$_SESSION['id'];
-    if (hash_equals($_SESSION['bhmstoken'], $atv_row['session_token'])) {
+//$sql_tv = "SELECT * FROM sessions WHERE admin_id='$atv' AND logged_in='1' AND created_at=CURRENT_DATE()";
+//$result_atv = mysqli_query($conn, $sql_tv);
+//
+//
+//if (mysqli_num_rows($result_atv) < 1){
+//
+//    $_SESSION['msg'] = "Not authorised...";
+//    $_SESSION['msg_class'] = "alert-danger";
+//    unset($_SESSION['bhmsemail']);
+//    unset($_SESSION['bhmsuser']);
+//    unset($_SESSION['bhmstoken']);
+//    header('location:../authentication');
+//}else{
+//
+//    $atv_row = $result_atv->fetch_assoc();
+//
+//    $ssid=$atv_row['session_id'];
+//    $as_id=$_SESSION['id'];
+//    if (hash_equals($_SESSION['bhmstoken'], $atv_row['session_token'])) {
 
 
 
@@ -63,16 +63,6 @@ if (mysqli_num_rows($result_atv) < 1){
 
 
 
-                $del_stoken="DELETE  FROM sessions where admin_id='$as_id' and session_id = '$ssid'";
-
-                if (mysqli_query($conn, $del_stoken)) {
-                    unset($_SESSION['bhmsemail']);
-                    unset($_SESSION['bhmsuser']);
-                    unset($_SESSION['bhmstoken']);
-                    $_SESSION['msg'] = "Your session has expired...";
-                    $_SESSION['msg_class'] = "alert-danger";
-                    header('location:../authentication');
-                }
 
             }
         }
@@ -81,18 +71,18 @@ if (mysqli_num_rows($result_atv) < 1){
          * is based on it and not the user's login time.
          */
         $_SESSION['LAST_ACTIVITY'] = $time;
-    }else{
-
-        $_SESSION['msg'] = "token Verification failed";
-        $_SESSION['msg_class'] = "alert-danger";
-        unset($_SESSION['bhmsemail']);
-        unset($_SESSION['bhmsuser']);
-        unset($_SESSION['bhmstoken']);
-        $del_stoken="DELETE  FROM sessions where admin_id='$as_id' and session_id = '$ssid'";
-
-        if (mysqli_query($conn, $del_stoken)) {
-
-            header('location:../authentication');
-        }
-
-    }}
+//    }else{
+//
+//        $_SESSION['msg'] = "token Verification failed";
+//        $_SESSION['msg_class'] = "alert-danger";
+//        unset($_SESSION['bhmsemail']);
+//        unset($_SESSION['bhmsuser']);
+//        unset($_SESSION['bhmstoken']);
+//        $del_stoken="DELETE  FROM sessions where admin_id='$as_id' and session_id = '$ssid'";
+//
+//        if (mysqli_query($conn, $del_stoken)) {
+//
+//            header('location:../authentication');
+//        }
+//
+//    }}

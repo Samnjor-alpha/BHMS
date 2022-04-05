@@ -14,10 +14,10 @@ require 'query.php';
     <meta name="author" content="" />
     <title>Manage monthly sales</title>
 
-    <? include '../public/stylesheet.php'?>
+    <?php  include '../public/stylesheet.php'?>
 </head>
 <body class="sb-nav-fixed">
-<? include 'topbar.php'?>
+<?php  include 'topbar.php'?>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         <?php require 'sidebar.php';?>
@@ -41,7 +41,7 @@ require 'query.php';
 <!--                        <input class="btn btn-secondary btn-sm" name="editr" value="View sales" type="submit">-->
 <!--                    </form></div>-->
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item">Manage <? $date2 = new DateTime('Y');
+                    <li class="breadcrumb-item">Manage <?php $date2 = new DateTime('Y');
                        echo  $dt2=$date2->format('Y'); ?> Monthly Records</li>
                 </ol>
                 <div class="row">
@@ -169,9 +169,9 @@ require 'query.php';
 
         </main>
 
-        <? include '../public/footer.php'?>
+        <?php  include '../public/footer.php'?>
 
-        <? include '../public/scripts.php'?>
+        <?php  include '../public/scripts.php'?>
 
 
 

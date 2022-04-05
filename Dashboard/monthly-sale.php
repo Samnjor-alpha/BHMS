@@ -18,15 +18,15 @@ include 'process-data/csrf.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Monthly sales</title>
-    <? include '../public/stylesheet.php'?>
+    <?php  include '../public/stylesheet.php'?>
 </head>
 <body class="sb-nav-fixed">
-<? include 'topbar.php'?>
+<?php  include 'topbar.php'?>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         <?php require 'sidebar.php';?>
     </div>
-    <? include 'process-data/add-mrecord.php'; ?>
+    <?php  include 'process-data/add-mrecord.php'; ?>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
@@ -149,7 +149,7 @@ include 'process-data/csrf.php';
 
         </main>
 
-        <? include '../public/footer.php'?>
+        <?php  include '../public/footer.php'?>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

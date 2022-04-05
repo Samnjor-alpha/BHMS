@@ -15,7 +15,7 @@ include 'query.php';
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Dashboard</title>
-    <? include '../public/stylesheet.php' ?>
+    <?php include '../public/stylesheet.php' ?>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <a class="navbar-brand" href="home.php">Tomai water supplies</a>
@@ -244,7 +244,7 @@ include 'query.php';
     </div>
 
 
-    <? include '../public/scripts.php' ?>
+    <?php include '../public/scripts.php' ?>
 
 
 </body>

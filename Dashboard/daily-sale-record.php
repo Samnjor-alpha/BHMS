@@ -15,11 +15,11 @@ include 'query.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Daily sale records</title>
-<? include '../public/stylesheet.php'?>
+    <?php include '../public/stylesheet.php'?>
 
 </head>
 <body class="sb-nav-fixed">
-<? include 'topbar.php'?>
+<?php include 'topbar.php'?>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         <?php require 'sidebar.php';?>
@@ -27,7 +27,7 @@ include 'query.php';
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h3 class="mt-4">Daily sale Records : <? echo date('D, d-M-Y'); ?></h3>
+                <h3 class="mt-4">Daily sale Records : <?php echo date('D, d-M-Y'); ?></h3>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Today's Sale</li>
                 </ol>
@@ -41,7 +41,7 @@ include 'query.php';
                     <!-- /.btn-group -->
                 </div>
             </div>
-            <? include 'process-data/add-drecord.php' ?>
+            <?php include 'process-data/add-drecord.php' ?>
             <div class="container">
                  <div class="row justify-content-center align-items-center">
                  <div id="login-box" class="col-md-10">
@@ -120,7 +120,7 @@ include 'query.php';
 
         </main>
 
-                <? include '../public/footer.php'?>
+        <?php include '../public/footer.php'?>
 
         <?php include '../public/scripts.php'?>
 

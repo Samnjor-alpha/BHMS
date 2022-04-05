@@ -58,7 +58,7 @@ function formatMoney($number, $fractional=false) {
     </style>
 </head>
 <body class="sb-nav-fixed">
-<? include 'topbar.php'?>
+<?php  include 'topbar.php'?>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         <?php require 'sidebar.php';?>
@@ -296,7 +296,7 @@ function formatMoney($number, $fractional=false) {
                     </div>
                 </div>
         </main>
-       <? include '../public/footer.php'?>
+       <?php  include '../public/footer.php'?>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>

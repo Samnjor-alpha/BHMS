@@ -19,11 +19,11 @@ $sql = mysqli_query($conn, "SELECT * FROM mcustomer_sales WHERE client_id='$cid'
     <title>Client Receipts</title>
 
 
-    <? include '../public/stylesheet.php'?>
+    <?php  include '../public/stylesheet.php'?>
 
   </head>
 <body class="sb-nav-fixed">
-<? include 'topbar.php'?>
+<?php  include 'topbar.php'?>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
     <?php require 'sidebar.php';?>
@@ -119,9 +119,9 @@ $sql = mysqli_query($conn, "SELECT * FROM mcustomer_sales WHERE client_id='$cid'
 
         </main>
 
-        <? include '../public/footer.php'?>
+        <?php  include '../public/footer.php'?>
 
-        <? include '../public/scripts.php'?>
+        <?php  include '../public/scripts.php'?>
 
 
 </body>

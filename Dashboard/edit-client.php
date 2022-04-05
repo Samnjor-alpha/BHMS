@@ -27,10 +27,10 @@ $msg_class = "";
     <meta name="author" content="" />
     <title>Update Client</title>
     
-<? include '../public/stylesheet.php'?>
+<?php  include '../public/stylesheet.php'?>
 </head>
 <body class="sb-nav-fixed">
-<? include 'topbar.php'?>
+<?php  include 'topbar.php'?>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
       <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -175,7 +175,7 @@ $msg_class = "";
 
         </main>
 
-        <? include '../public/footer.php'?>
+        <?php  include '../public/footer.php'?>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
